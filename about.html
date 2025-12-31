@@ -13,7 +13,7 @@
                 extend: {
                     colors: {
                         primary: '#00ffff',
-                        secondary: '#ff00ff',
+                        secondary: '#00BFFF',
                         navy: '#050A19',
                     }
                 }
@@ -33,414 +33,10 @@
     <!--[if !IE]><!-->
     <link rel="stylesheet" href="css/index.css">
     <!--<![endif]-->
-    <style>
-        /* Shared Premium Styling (copied from Portfolio) */
-        :root {
-            --primary-color: #00ffff;
-            --secondary-color: #ff00ff;
-            --bg-dark: #050A19;
-            --card-bg: rgba(10, 20, 30, 0.65);
-            --text-main: #e0e0e0;
-            --font-display: 'Orbitron', sans-serif;
-            --font-body: 'Roboto', sans-serif;
-        }
 
-        body {
-            font-family: var(--font-body);
-            color: var(--text-main);
-            background-color: var(--bg-dark);
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        .brand {
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* About Specific Styles */
-        main {
-            padding-bottom: 50px;
-        }
-
-        /* Hero */
-        .page-hero {
-            text-align: center;
-            padding: 80px 20px 40px;
-            background: linear-gradient(180deg, rgba(0, 255, 255, 0.05) 0%, transparent 100%);
-            position: relative;
-        }
-
-        .page-hero h1 {
-            font-size: 3rem;
-            color: var(--primary-color);
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            margin-bottom: 20px;
-        }
-
-        /* Profile Section */
-        .profile-section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-        }
-
-        .profile-img-container {
-            flex: 0 0 300px;
-            height: 300px;
-            position: relative;
-            border-radius: 50%;
-            padding: 10px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            background: #111;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .profile-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-        }
-
-        .profile-content {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .profile-content h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--secondary-color);
-            padding-left: 15px;
-        }
-
-        .profile-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #ccc;
-        }
-
-        .highlight {
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        /* Skills Section */
-        .skills-section {
-            max-width: 1000px;
-            margin: 20px auto 60px;
-            padding: 20px;
-        }
-
-        .skills-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--secondary-color);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            background: rgba(0, 255, 255, 0.1);
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-        }
-
-        .skill-card i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #ddd;
-        }
-
-        .skill-name {
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        /* Timeline/Experience */
-        .timeline-section {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-        }
-
-        .timeline-section::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, transparent, var(--primary-color), transparent);
-            z-index: 0;
-        }
-
-        .timeline-item {
-            margin-bottom: 50px;
-            position: relative;
-            width: 50%;
-            z-index: 1;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 40px;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 40px;
-            text-align: left;
-        }
-
-        .timeline-content {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 0, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
-        }
-
-        .timeline-year {
-            font-family: var(--font-display);
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .timeline-node {
-            position: absolute;
-            top: 20px;
-            width: 20px;
-            height: 20px;
-            background: #000;
-            border: 3px solid var(--secondary-color);
-            border-radius: 50%;
-            z-index: 2;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-node {
-            right: -10px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-node {
-            left: -10px;
-        }
-
-        /* Adjustments for Layout override */
-        @media (min-width: 576px) {
-            main {
-                grid-column: 1 / 7 !important;
-                background: none !important;
-                height: auto !important;
-                min-height: 80vh;
-                overflow: visible !important;
-            }
-
-            aside {
-                display: none;
-            }
-
-            .paralax {
-                display: none;
-            }
-
-            .hudp {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .timeline-section::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                left: 0 !important;
-                padding-left: 50px !important;
-                padding-right: 0 !important;
-                text-align: left !important;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-node,
-            .timeline-item:nth-child(even) .timeline-node {
-                left: 10px;
-                right: auto;
-            }
-        }
-
-        /* Footer override */
-        footer {
-            background: linear-gradient(to top, #000 0%, #050505 100%);
-            border-top: 1px solid rgba(0, 255, 255, 0.1);
-            position: relative;
-            padding-top: 60px;
-            margin-top: 50px;
-            font-family: var(--font-body);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            padding: 0 30px 40px;
-        }
-
-        .footer-col h3 {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 30px;
-            height: 2px;
-            background: var(--secondary-color);
-            box-shadow: 0 0 10px var(--secondary-color);
-        }
-
-        .footer-col p {
-            color: #888;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .footer-links {
-            list-style: none;
-            /* Ensure no bullets */
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-            text-align: left !important;
-        }
-
-        .footer-links a {
-            color: #aaa;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-            padding-left: 5px;
-            text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-        }
-
-        .footer-links a::before {
-            content: '>';
-            margin-right: 8px;
-            font-size: 0.8em;
-            color: var(--secondary-color);
-            opacity: 0;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover::before {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            justify-content: flex-start;
-        }
-
-        .social-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .social-btn:hover {
-            background: var(--primary-color);
-            color: #000;
-            box-shadow: 0 0 15px var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            background: #000;
-            padding: 20px 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-bottom p {
-            color: #555;
-            font-size: 0.85rem;
-            margin: 0;
-        }
-    </style>
 </head>
 
-<body>
+<body class="about-page">
     <div id="content">
         <!-- HEADER (Kept from Index) -->
         <header onclick="specles()">
@@ -554,7 +150,7 @@
                         <div class="skill-name">3D Modeling</div>
                     </div>
                     <div class="skill-card">
-                        <i class="fa fa-paint-brush" style="color: #ff00ff;"></i>
+                        <i class="fa fa-paint-brush" style="color: #00BFFF;"></i>
                         <div class="skill-name">UI/UX Design</div>
                     </div>
                     <div class="skill-card">
@@ -618,7 +214,7 @@
                 <!-- Brand Col -->
                 <div class="footer-col">
                     <h3
-                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#ff00ff]">
+                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#00BFFF]">
                         PROSENJIT</h3>
                     <p class="text-gray-400 leading-relaxed mb-5">Blending artistic vision with technical precision.
                         Creating immersive digital experiences that leave a lasting impression.</p>
@@ -627,7 +223,7 @@
                 <!-- Links Col -->
                 <div class="footer-col">
                     <h3
-                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#ff00ff]">
+                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#00BFFF]">
                         Quick Links</h3>
                     <ul class="space-y-3">
                         <li><a href="index.html"
@@ -651,7 +247,7 @@
                 <!-- Connect Col -->
                 <div class="footer-col">
                     <h3
-                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#ff00ff]">
+                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#00BFFF]">
                         Connect</h3>
                     <p class="text-gray-400 leading-relaxed mb-5">Open for freelance opportunities and collaborations.
                     </p>

@@ -13,7 +13,7 @@
                 extend: {
                     colors: {
                         primary: '#00ffff',
-                        secondary: '#ff00ff',
+                        secondary: '#00BFFF',
                         navy: '#050A19',
                     }
                 }
@@ -37,7 +37,7 @@
         /* Portfolio Specific Overrides & Premium Styling */
         :root {
             --primary-color: #00ffff;
-            --secondary-color: #ff00ff;
+            --secondary-color: #00BFFF;
             --bg-dark: #050A19;
             --card-bg: rgba(10, 20, 30, 0.65);
             --text-main: #e0e0e0;
@@ -153,18 +153,6 @@
         }
 
         /* Specialized backgrounds for types */
-        .portfolio-card.type-3d .card-image {
-            background: linear-gradient(135deg, #2a0845, #6441a5);
-        }
-
-        .portfolio-card.type-web .card-image {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        }
-
-        .portfolio-card.type-design .card-image {
-            background: linear-gradient(135deg, #134e5e, #71b280);
-        }
-
         .portfolio-card:hover .card-image::before {
             opacity: 0.9;
         }
@@ -456,7 +444,7 @@
     </style>
 </head>
 
-<body>
+<body class="portfolio-page">
     <div id="content">
         <!-- HEADER (Kept from Index) -->
         <header onclick="specles()">
@@ -673,7 +661,7 @@
                 <!-- Brand Col -->
                 <div class="footer-col">
                     <h3
-                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#ff00ff]">
+                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#00BFFF]">
                         PROSENJIT</h3>
                     <p class="text-gray-400 leading-relaxed mb-5">Blending artistic vision with technical precision.
                         Creating immersive digital experiences that leave a lasting impression.</p>
@@ -682,7 +670,7 @@
                 <!-- Links Col -->
                 <div class="footer-col">
                     <h3
-                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#ff00ff]">
+                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#00BFFF]">
                         Quick Links</h3>
                     <ul class="space-y-3">
                         <li><a href="index.html"
@@ -706,7 +694,7 @@
                 <!-- Connect Col -->
                 <div class="footer-col">
                     <h3
-                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#ff00ff]">
+                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#00BFFF]">
                         Connect</h3>
                     <p class="text-gray-400 leading-relaxed mb-5">Open for freelance opportunities and collaborations.
                     </p>
