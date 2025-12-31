@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PORTFOLIO - PROSENJIT SAPUI</title>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00ffff',
+                        secondary: '#ff00ff',
+                        navy: '#050A19',
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script src="js/script.js"></script>
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="all-ie-only.css" />
+	<![endif]-->
+
+    <!--[if !IE]><!-->
+    <link rel="stylesheet" href="css/index.css">
+    <!--<![endif]-->
+    <style>
+        /* Portfolio Specific Overrides & Premium Styling */
+        :root {
+            --primary-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --bg-dark: #050A19;
+            --card-bg: rgba(10, 20, 30, 0.65);
+            --text-main: #e0e0e0;
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            /* Ensure background is consistent if base css differs */
+            background-color: var(--bg-dark);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .brand {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Portfolio Hero Section */
+        .portfolio-hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-hero h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+            margin-bottom: 10px;
+            animation: glitch 1s linear infinite;
+            /* Optional: adds to cyber feel */
+            animation-play-state: paused;
+            /* Play on hover? */
+        }
+
+        .portfolio-hero h1:hover {
+            animation-play-state: running;
+        }
+
+        .portfolio-hero p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        /* Card Design */
+        .portfolio-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            /* Height can auto-expand */
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+
+        /* Card Image Area (Placeholder for now) */
+        .card-image {
+            height: 200px;
+            background: linear-gradient(45deg, #111, #222);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        /* Simulated Image Content */
+        .card-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Specialized backgrounds for types */
+        .portfolio-card.type-3d .card-image {
+            background: linear-gradient(135deg, #2a0845, #6441a5);
+        }
+
+        .portfolio-card.type-web .card-image {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        }
+
+        .portfolio-card.type-design .card-image {
+            background: linear-gradient(135deg, #134e5e, #71b280);
+        }
+
+        .portfolio-card:hover .card-image::before {
+            opacity: 0.9;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.2);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover .card-icon {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ccc;
+            margin-bottom: 20px;
+            font-family: var(--font-body);
+            text-align: left;
+            /* Override global center alignment if needed */
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tech-pill {
+            font-size: 0.75rem;
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            text-transform: uppercase;
+        }
+
+        .card-action {
+            margin-top: auto;
+        }
+
+        .btn-view {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 0;
+            background: transparent;
+            color: white;
+            border: 1px solid var(--primary-color);
+            text-align: center;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-view::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-view:hover::before {
+            left: 0;
+        }
+
+        .btn-view:hover {
+            color: black;
+            box-shadow: 0 0 15px var(--primary-color);
+            text-shadow: none;
+            /* Remove any text shadow on hover */
+        }
+
+        /* Override Main Layout */
+        @media (min-width: 576px) {
+            main {
+                grid-column: 1 / 7 !important;
+                background: none !important;
+                /* Remove looping animation bg from main if distracting */
+                height: auto !important;
+                min-height: 80vh;
+                overflow: visible !important;
+            }
+
+            /* Hide the sidebar from index layout */
+            aside {
+                display: none;
+            }
+
+            /* Hide the paralax slider from index layout */
+            .paralax {
+                display: none;
+            }
+
+            /* Hide the HUD from index layout? Optional. Let's hide it to be clean */
+            .hudp {
+                display: none;
+            }
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 576px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Simple Glitch Animation Keyframes */
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        /* Premium Footer Styles */
+        footer {
+            background: linear-gradient(to top, #000 0%, #050505 100%);
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            position: relative;
+            padding-top: 60px;
+            margin-top: 50px;
+            font-family: var(--font-body);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 30px 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background: var(--secondary-color);
+            box-shadow: 0 0 10px var(--secondary-color);
+        }
+
+        .footer-col p {
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            /* Ensure no bullets */
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+            text-align: left !important;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        .footer-links a::before {
+            content: '>';
+            margin-right: 8px;
+            font-size: 0.8em;
+            color: var(--secondary-color);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-start;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--primary-color);
+            color: #000;
+            box-shadow: 0 0 15px var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            background: #000;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-bottom p {
+            color: #555;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <!-- HEADER (Kept from Index) -->
+        <header onclick="specles()">
+            <ul id="rotateh" class="specles">
+                <!-- Particles kept for consistency -->
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+            </ul>
+            <h1 class="brand" id="logop">logo</h1>
+
+            <div class="collapse-button">
+                <a href="#" class="collapse" onclick="add()">
+                    <span></span><span></span><span></span>
+                </a>
+            </div>
+
+            <div id="social">
+                <ul>
+                    <li onmouseover="pro()"><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                    </li>
+                    <li onmouseover="pro()"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li onmouseover="pro()"><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- NAVIGATION (Kept from Index) -->
+        <div class="navbar" id="navigation">
+            <nav id="myDropdown">
+                <ul>
+                    <li onmouseover="pro()"><a id="firsta" href="index.html">Home</a><a id="cross" onclick="add()"
+                            href="#">&#x2717;</a></li>
+                    <li onmouseover="pro()" id="sub"><a href="contact.html">Contact</a>
+                        <ul>
+                            <li><a href="#">f-book</a></li>
+                            <li id="sublist"><a href="#">insta</a></li>
+                        </ul>
+                    </li>
+                    <li onmouseover="pro()"><a href="portfolio.html">Portfolio</a></li>
+                    <li onmouseover="pro()"><a href="about.html">About</a></li>
+                    <li onmouseover="pro()"><a id="lasta" href="#">skils</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            <div class="portfolio-hero">
+                <h1>Selected Works</h1>
+                <p>Exploring the intersection of Design, Code, and 3D Graphics.</p>
+            </div>
+
+            <div class="portfolio-container">
+                <div class="portfolio-grid">
+
+                    <!-- Item 1: 3D Model -->
+                    <div class="portfolio-card type-3d">
+                        <div class="card-image">
+                            <!-- Placeholder Icon -->
+                            <i class="fa fa-cube card-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <div>
+                                <h3 class="card-title">Cyber Samurai <i class="fa fa-external-link"
+                                        style="font-size:0.7em"></i></h3>
+                                <p class="card-desc">High-fidelity 3D character model optimized for game engines.
+                                    Texturing done in Substance Painter.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill">Blender</span>
+                                    <span class="tech-pill">Substance</span>
+                                    <span class="tech-pill">ZBrush</span>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a href="#" class="btn-view">View Model</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Web App -->
+                    <div class="portfolio-card type-web">
+                        <div class="card-image">
+                            <i class="fa fa-code card-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <div>
+                                <h3 class="card-title">Neon Dashboard <i class="fa fa-external-link"
+                                        style="font-size:0.7em"></i></h3>
+                                <p class="card-desc">A React-based analytics dashboard with teal-time data visualization
+                                    and dark mode UI specific.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill">React</span>
+                                    <span class="tech-pill">D3.js</span>
+                                    <span class="tech-pill">Node.js</span>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a href="#" class="btn-view">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Design -->
+                    <div class="portfolio-card type-design">
+                        <div class="card-image">
+                            <i class="fa fa-paint-brush card-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <div>
+                                <h3 class="card-title">Brand Identity Y <i class="fa fa-external-link"
+                                        style="font-size:0.7em"></i></h3>
+                                <p class="card-desc">Complete corporate identity package including logo, stationery, and
+                                    brand guidelines.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill">Illustrator</span>
+                                    <span class="tech-pill">Photoshop</span>
+                                    <span class="tech-pill">Figma</span>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a href="#" class="btn-view">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Animation -->
+                    <div class="portfolio-card type-3d">
+                        <div class="card-image">
+                            <i class="fa fa-film card-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <div>
+                                <h3 class="card-title">Motion Reel 2024 <i class="fa fa-external-link"
+                                        style="font-size:0.7em"></i></h3>
+                                <p class="card-desc">A compilation of motion graphics projects, kinetic typography, and
+                                    VFX shots.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill">After Effects</span>
+                                    <span class="tech-pill">Cinema 4D</span>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a href="#" class="btn-view">Watch Video</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: UI Concept -->
+                    <div class="portfolio-card type-design">
+                        <div class="card-image">
+                            <i class="fa fa-mobile card-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <div>
+                                <h3 class="card-title">FinTech App <i class="fa fa-external-link"
+                                        style="font-size:0.7em"></i></h3>
+                                <p class="card-desc">Clean and intuitive mobile app interface design for a modern
+                                    banking solution.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill">Figma</span>
+                                    <span class="tech-pill">Prototyping</span>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a href="#" class="btn-view">View Prototype</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: E-Commerce -->
+                    <div class="portfolio-card type-web">
+                        <div class="card-image">
+                            <i class="fa fa-shopping-cart card-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <div>
+                                <h3 class="card-title">ShopX Platform <i class="fa fa-external-link"
+                                        style="font-size:0.7em"></i></h3>
+                                <p class="card-desc">Full-stack e-commerce solution with payment gateway integration and
+                                    inventory management.</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill">Vue.js</span>
+                                    <span class="tech-pill">Laravel</span>
+                                    <span class="tech-pill">Stripe</span>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a href="#" class="btn-view">Visit Store</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <!-- PREMIUM FOOTER -->
+        <!-- PREMIUM FOOTER -->
+        <footer class="bg-navy border-t border-cyan-400/10 pt-16 mt-12 font-sans relative">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-8 pb-10">
+                <!-- Brand Col -->
+                <div class="footer-col">
+                    <h3
+                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#ff00ff]">
+                        PROSENJIT</h3>
+                    <p class="text-gray-400 leading-relaxed mb-5">Blending artistic vision with technical precision.
+                        Creating immersive digital experiences that leave a lasting impression.</p>
+                </div>
+
+                <!-- Links Col -->
+                <div class="footer-col">
+                    <h3
+                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#ff00ff]">
+                        Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="flex items-center text-gray-400 hover:text-primary hover:pl-1 hover:shadow-[0_0_8px_rgba(0,255,255,0.4)] transition-all duration-300 before:content-['>'] before:mr-2 before:text-sm before:text-secondary before:opacity-0 before:-translate-x-2 hover:before:opacity-100 hover:before:translate-x-0">Home</a>
+                        </li>
+                        <li><a href="portfolio.html"
+                                class="flex items-center text-gray-400 hover:text-primary hover:pl-1 hover:shadow-[0_0_8px_rgba(0,255,255,0.4)] transition-all duration-300 before:content-['>'] before:mr-2 before:text-sm before:text-secondary before:opacity-0 before:-translate-x-2 hover:before:opacity-100 hover:before:translate-x-0">Portfolio</a>
+                        </li>
+                        <li><a href="about.html"
+                                class="flex items-center text-gray-400 hover:text-primary hover:pl-1 hover:shadow-[0_0_8px_rgba(0,255,255,0.4)] transition-all duration-300 before:content-['>'] before:mr-2 before:text-sm before:text-secondary before:opacity-0 before:-translate-x-2 hover:before:opacity-100 hover:before:translate-x-0">About
+                                Me</a></li>
+                        <li><a href="contact.html"
+                                class="flex items-center text-gray-400 hover:text-primary hover:pl-1 hover:shadow-[0_0_8px_rgba(0,255,255,0.4)] transition-all duration-300 before:content-['>'] before:mr-2 before:text-sm before:text-secondary before:opacity-0 before:-translate-x-2 hover:before:opacity-100 hover:before:translate-x-0">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Connect Col -->
+                <div class="footer-col">
+                    <h3
+                        class="font-display text-primary text-xl mb-6 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-secondary after:shadow-[0_0_10px_#ff00ff]">
+                        Connect</h3>
+                    <p class="text-gray-400 leading-relaxed mb-5">Open for freelance opportunities and collaborations.
+                    </p>
+                    <div class="flex gap-4 justify-start">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10 hover:bg-primary hover:text-black hover:shadow-[0_0_15px_#00ffff] hover:-translate-y-1 transition-all duration-300"><i
+                                class="fa fa-facebook"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10 hover:bg-primary hover:text-black hover:shadow-[0_0_15px_#00ffff] hover:-translate-y-1 transition-all duration-300"><i
+                                class="fa fa-twitter"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10 hover:bg-primary hover:text-black hover:shadow-[0_0_15px_#00ffff] hover:-translate-y-1 transition-all duration-300"><i
+                                class="fa fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10 hover:bg-primary hover:text-black hover:shadow-[0_0_15px_#00ffff] hover:-translate-y-1 transition-all duration-300"><i
+                                class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-black py-5 text-center border-t border-white/5">
+                <p class="text-gray-500 text-sm m-0">&copy; 2025 Prosenjit Sapui. All Rights Reserved. Designed with
+                    <span class="text-secondary">&#10084;</span> and Code.
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <div id="totop" onclick="topFunction()">
+        top
+    </div>
+</body>
+
+</html>

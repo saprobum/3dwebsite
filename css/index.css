@@ -18,7 +18,7 @@
 /* for extra small screen*/
 
 body {
-  background: red;
+  background: #050A19;
 }
 
 #content {
@@ -64,12 +64,10 @@ header #social {
   top: 29%;
   box-shadow: 2px 2px 5px 1px skyblue, -2px -2px 5px 1px skyblue;
   transform: skew(-20deg);
-  background: linear-gradient(
-    -180deg,
-    rgba(0, 255, 255, 0.3) 10%,
-    transparent 80%,
-    rgba(0, 255, 255, 0.5)
-  );
+  background: linear-gradient(-180deg,
+      rgba(0, 255, 255, 0.3) 10%,
+      transparent 80%,
+      rgba(0, 255, 255, 0.5));
   transition: all 0.8s ease-in-out;
 }
 
@@ -112,6 +110,7 @@ header #social {
 .navbar {
   display: block;
 }
+
 /*navbar ends*/
 /* main rules starts */
 main {
@@ -125,6 +124,7 @@ main {
   height: 330px;
   /* padding:20px */
 }
+
 main #rotatep {
   transform-origin: center;
   transform-style: preserve-3d;
@@ -137,7 +137,10 @@ main #rotatep {
   transform: rotate3d(0, 1, 0, 0deg);
   //border:2px solid lime;
   transform-origin: 0px 50%;
+  font-size: 1.5em;
+  /* Increased font size */
 }
+
 /* #rotatep:hover {
   animation-play-state: paused;
 } */
@@ -145,6 +148,7 @@ main #rotatep {
 .rotate {
   animation: rotate 5s linear infinite;
 }
+
 /* after the click event in the main */
 main .rotch {
   overflow: hidden;
@@ -156,17 +160,17 @@ main .rotch {
   border: 2px solid skyblue;
   //backface-visibility:hidden;
   box-shadow: inset 2px 2px 5px 1px skyblue, inset -2px -2px 5px 1px skyblue;
-  background: linear-gradient(
-    45deg,
-    transparent 1%,
-    transparent,
-    rgba(0, 255, 255, 0.6)
-  );
+  background: linear-gradient(45deg,
+      transparent 1%,
+      transparent,
+      rgba(0, 255, 255, 0.6));
 }
+
 #rotatep .one {
   transform: rotate3d(0, 1, 0, 0deg);
   padding-top: 100px;
 }
+
 #rotatep .two {
   background: ;
   transform: rotate3d(0, 1, 0, 90deg);
@@ -178,6 +182,7 @@ main .rotch {
   transform: rotate3d(0, 1, 0, 180deg);
   padding-top: 100px;
 }
+
 #rotatep .four {
   background: ;
   transform: rotate3d(0, 1, 0, 270deg);
@@ -193,6 +198,7 @@ main .rotch {
   background: aqua;
   //transform:rotate(300deg);
 }
+
 .rotch:hover .underline {
   animation: flick 0.1s ease-in forwards;
 }
@@ -222,6 +228,7 @@ aside {
   box-shadow: inset 2px 2px 5px 1px skyblue, inset -2px -2px 5px 1px skyblue;
   background: rgba(0, 0, 0, 0.5);
 }
+
 .asidewpr {
   padding: 10px;
   //transform-style:preserve-3d;
@@ -235,6 +242,7 @@ aside {
   transform-origin: 50% 0%;
   transform: rotate3d(1, 0, 0, -30deg);
 }
+
 aside:hover .asidewpr {
   animation: dangle 1s linear infinite;
 }
@@ -275,6 +283,7 @@ aside:hover .asidewpr {
   z-index: 99;
   width: 200px;
 }
+
 .show #sub:hover ul {
   top: 40px;
 }
@@ -287,22 +296,22 @@ aside:hover .asidewpr {
     0px 2px 12px 1px;
   background: #000;
 }
+
 nav {
   display: none;
 }
-nav > ul {
+
+nav>ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 nav a {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 255, 255, 0.5) 1%,
-    transparent 90%,
-    skyblue
-  );
+  background: linear-gradient(180deg,
+      rgba(0, 255, 255, 0.5) 1%,
+      transparent 90%,
+      skyblue);
   display: block;
   padding: 10px;
   color: #fff;
@@ -341,19 +350,23 @@ nav a:hover {
   visibility: visible;
   opacity: 1;
 }
+
 #sub ul a {
   transform: rotate3d(1, 0, 0, 40deg);
 }
+
 #sub:hover a {
   transform: rotate3d(0, 0, 0, 0deg);
   opacity: 1;
 }
+
 /* navbar div ends */
 .slider {
   display: block;
   position: relative;
   padding: 30px;
 }
+
 /* hud rule starts */
 
 .hudp {
@@ -378,6 +391,7 @@ nav a:hover {
   height: 250px;
   border: 1px solid black;
 }
+
 #para {
   position: absolute;
   top: 0px;
@@ -386,6 +400,7 @@ nav a:hover {
   height: 270%;
   background: url(../images/cor.jpg) no-repeat center / cover;
 }
+
 .layer2 {
   color: aqua;
   left: -30px;
@@ -393,6 +408,7 @@ nav a:hover {
   transform: skew(-10deg);
   width: 60%;
 }
+
 .layer3 {
   color: aqua;
   right: -30px;
@@ -400,6 +416,7 @@ nav a:hover {
   transform: skew(-10deg);
   width: 50%;
 }
+
 /* paralax rule ends */
 
 /*rules fot the footer*/
@@ -414,6 +431,7 @@ footer .list {
   padding: 10px 50px;
   background: rgba(0, 0, 0, 0.7);
 }
+
 footer .list li {
   color: aqua;
   transition: all 0.5s linear;
@@ -424,6 +442,7 @@ footer .list li {
   border-radius: 30px;
   margin-bottom: 2px;
 }
+
 footer .list li:hover {
   border-top: 3px solid aqua;
   border-bottom: 3px groove skyblue;
@@ -447,6 +466,7 @@ footer #social ul a {
   color: white;
   font-size: 20px;
 }
+
 /* footer ul social */
 
 #copy {
@@ -469,6 +489,7 @@ footer #social ul a {
   border-radius: 50% 50% 0px 0px;
   transition: all 0.1s linear;
 }
+
 #totop:hover {
   background: black;
   box-shadow: 2px 2px 12px 1px skyblue, -2px -2px 12px 1px skyblue;
@@ -479,16 +500,16 @@ footer #social ul a {
 /*media qusry starts*/
 
 @media (min-width: 576px) {
-  body {
-    background: firebrick;
-  }
+
 
   nav {
     display: block;
   }
+
   #sub {
     position: relative;
   }
+
   #sub:hover ul {
     position: absolute;
     left: 0px;
@@ -496,6 +517,7 @@ footer #social ul a {
     margin: 0px;
     display: block;
   }
+
   /*    grid rules starts*/
   #content {
     display: grid;
@@ -515,9 +537,11 @@ footer #social ul a {
     box-sizing: border-box;
     position: relative;
   }
+
   header #social:hover {
     right: -12px;
   }
+
   header #social:after {
     content: "";
     width: 10px;
@@ -553,6 +577,7 @@ footer #social ul a {
   #cross {
     display: none;
   }
+
   /*social starts*/
   header #social {
     display: block;
@@ -583,11 +608,13 @@ footer #social ul a {
       0px 2px 12px 1px;
     background: black;
   }
+
   .fixed nav #firsta {
     padding: 8px;
 
     border-radius: 0px 0px 0px 40px;
   }
+
   .fixed nav #lasta {
     padding: 8px;
 
@@ -622,15 +649,18 @@ footer #social ul a {
     grid-row: 6/9;
     position: relative;
   }
+
   .paralax {
     grid-column: 1/7;
     grid-row: 9/10;
   }
+
   footer {
     grid-column: 1/7;
     grid-row: 13 / auto;
     position: relative;
   }
+
   /*grid ends*/
 
   /*rules fot the footer*/
@@ -639,11 +669,13 @@ footer #social ul a {
     display: flex;
     flex-wrap: nowrap;
   }
+
   footer .list {
     padding: 10px;
     width: 33.3%;
     background: rgba(0, 0, 0, 0.5);
   }
+
   footer .list li {
     background: linear-gradient(45deg, transparent 75%, #555);
     transition: all 0.7s linear;
@@ -654,28 +686,12 @@ footer #social ul a {
     border-radius: 30px;
     margin-bottom: 2px;
   }
+
   footer #social {
     display: none;
   }
 
   /*rules fot the footer  ends*/
 }
+
 /* first media query ends */
-
-@media (min-width: 768px) {
-  body {
-    background: #11a;
-  }
-}
-
-@media (min-width: 992px) {
-  body {
-    background: firebrick;
-  }
-}
-
-@media (min-width: 1200px) {
-  body {
-    background: #346;
-  }
-}
