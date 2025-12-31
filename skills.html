@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden w-full">
 
 <head>
     <meta charset="UTF-8">
@@ -9,12 +9,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#00ffff',
-                        secondary: '#00BFFF',
-                        navy: '#050A19',
+                        primary: 'var(--primary-color)',
+                        secondary: 'var(--secondary-color)',
+                        navy: 'var(--bg-dark)',
                     }
                 }
             }
@@ -41,36 +42,100 @@
     </style>
 </head>
 
-<body class="bg-navy content-page">
+<body
+    class="content-page overflow-x-hidden w-full transition-colors duration-300 bg-gray-50 dark:bg-[#050A19] text-gray-900 dark:text-gray-100">
 
     <div id="container" class="min-h-screen flex flex-col">
         <!-- Header -->
-        <header>
-            <div id="logop">Logo</div>
-            <div id="social">
-                <ul>
-                    <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                </ul>
-            </div>
-            <button class="collapse-button" onclick="collapse()">
-                <span></span>
-                <span></span>
-                <span></span>
+        <header onclick="specles()"
+            class="bg-gray-100 dark:bg-[rgba(5,10,25,0.95)] p-[30px] min-h-[120px] relative overflow-hidden transition-colors duration-300 flex items-center justify-center min-[576px]:col-span-6 min-[576px]:row-start-1 min-[576px]:row-end-2 box-border group shadow-md dark:shadow-none border-b border-gray-200 dark:border-none">
+            <ul id="rotateh" class="specles">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+            </ul>
+            <h1 class="w-[70px] h-[70px] absolute bg-no-repeat bg-center bg-cover indent-[-100000px] top-1/2 -translate-y-1/2 left-5 rounded-full transition-all duration-200 hover:shadow-[2px_2px_10px_2px_skyblue,-2px_-2px_10px_2px_skyblue,inset_-2px_-2px_10px_2px_#00ffff,inset_2px_2px_10px_2px_skyblue] font-display uppercase tracking-[2px]"
+                id="logop">logo</h1>
+
+            <button
+                class="min-[576px]:hidden absolute top-1/2 -translate-y-1/2 right-4 z-[9999] w-12 h-12 flex flex-col items-center justify-center gap-1.5 bg-cyan-500/20 border-2 border-cyan-400 rounded-lg hover:bg-cyan-500/40 hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,191,255,0.4)] hover:shadow-[0_0_25px_rgba(0,191,255,0.7)]"
+                id="hamburger-btn">
+                <span
+                    class="block w-7 h-0.5 bg-cyan-400 rounded-sm shadow-[0_0_10px_#00BFFF] transition-all duration-300"></span>
+                <span
+                    class="block w-7 h-0.5 bg-cyan-400 rounded-sm shadow-[0_0_10px_#00BFFF] transition-all duration-300"></span>
+                <span
+                    class="block w-7 h-0.5 bg-cyan-400 rounded-sm shadow-[0_0_10px_#00BFFF] transition-all duration-300"></span>
             </button>
+
+            <div id="content">
+                <!-- Theme Switcher -->
+                <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+                    <i class="fa fa-moon-o"></i>
+                </button>
+
+                <!-- HEADER (Refactored to match Index) -->
+                <div id="social"
+                    class="hidden min-[576px]:block absolute top-[15%] -left-[15px] w-[10px] h-[30px] z-[-1] before:content-[''] before:w-[10px] before:h-[30px] before:bg-gradient-to-b before:from-transparent before:to-[var(--primary-color)] before:absolute before:z-[-1] before:shadow-[2px_2px_5px_1px_var(--primary-color),-2px_-2px_5px_1px_var(--primary-color)] hover:right-[-12px] transition-all duration-300">
+                    <ul class="flex justify-end p-5 skew-x-[20deg] gap-4">
+                        <li onmouseover="pro()">
+                            <a href="#"
+                                class="text-[var(--primary-color)] p-2.5 border-2 border-groove border-[var(--primary-color)] rounded-[20%] hover:scale-110 hover:shadow-[0_0_10px_var(--primary-color)] transition-transform">
+                                <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li onmouseover="pro()">
+                            <a href="#"
+                                class="text-[var(--primary-color)] p-2.5 border-2 border-groove border-[var(--primary-color)] rounded-[20%] hover:scale-110 hover:shadow-[0_0_10px_var(--primary-color)] transition-transform">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li onmouseover="pro()">
+                            <a href="#"
+                                class="text-[var(--primary-color)] p-2.5 border-2 border-groove border-[var(--primary-color)] rounded-[20%] hover:scale-110 hover:shadow-[0_0_10px_var(--primary-color)] transition-transform">
+                                <i class="fa fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
         </header>
 
         <!-- Navbar -->
         <!--starting of navbar-->
-        <div class="navbar" id="navigation">
-            <nav id="nav">
-                <ul>
-                    <li onmouseover="pro()"><a id="firsta" href="index.html">Home</a></li>
-                    <li onmouseover="pro()"><a href="about.html">About</a></li>
-                    <li onmouseover="pro()"><a href="portfolio.html">Portfolio</a></li>
-                    <li onmouseover="pro()"><a href="skills.html">Skills</a></li>
-                    <li onmouseover="pro()"><a id="lasta" href="contact.html">Contact</a></li>
+        <div class="navbar min-[576px]:col-span-6 min-[576px]:row-start-2 min-[576px]:row-end-3 bg-blue-50/50 dark:bg-[rgba(5,10,25,0.8)] shadow-[var(--nav-inner-glow),0px_2px_12px_1px_black]"
+            id="navigation">
+            <nav id="nav" class="min-[576px]:block">
+                <ul class="flex flex-wrap justify-center">
+                    <li onmouseover="pro()"><a id="firsta" href="index.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Home</a>
+                    </li>
+                    <li onmouseover="pro()"><a href="about.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">About</a>
+                    </li>
+                    <li onmouseover="pro()"><a href="portfolio.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Portfolio</a>
+                    </li>
+                    <li onmouseover="pro()"><a href="skills.html"
+                            class="block p-2.5 text-center flex items-center justify-center min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-blue-400 dark:border-cyan-400 transition-all duration-300 font-bold bg-blue-100 dark:bg-transparent text-blue-700 dark:text-cyan-400 dark:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] shadow-inner dark:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Skills</a>
+                    </li>
+                    <li onmouseover="pro()"><a id="lasta" href="contact.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Contact</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -84,21 +149,26 @@
                 <h1 class="text-4xl md:text-6xl font-bold mb-4"><span
                         style="color:var(--secondary-color)">TECHNICAL</span> <span
                         style="color:var(--primary-color)">ARSENAL</span></h1>
-                <p class="text-gray-400 max-w-2xl mx-auto">A comprehensive breakdown of my capabilities across the
+                <p class="text-[var(--text-muted)] max-w-2xl mx-auto">A comprehensive breakdown of my capabilities
+                    across the
                     digital spectrum. From front-end architecture to 3D rendering.</p>
             </div>
 
             <!-- Frontend Development Section -->
             <div class="mb-16">
-                <h2 class="text-2xl category-title mb-6">Frontend Development</h2>
+                <h2
+                    class="text-2xl text-primary border-b-2 border-secondary inline-block pb-2 mb-8 drop-shadow-[0_0_15px_rgba(0,191,255,0.4)]">
+                    Frontend Development</h2>
 
-                <div class="mb-8 p-6 bg-white/5 rounded-lg border border-cyan-400/20 backdrop-blur-sm">
-                    <p class="text-gray-300 leading-relaxed">
+                <div
+                    class="mb-8 p-6 bg-[var(--glass-bg)] rounded-lg border border-[var(--border-color)] backdrop-blur-sm">
+                    <p class="text-[var(--text-main)] leading-relaxed">
                         <i class="fa fa-terminal text-primary mr-2"></i>
                         Architecting immersive web experiences with a focus on <span
-                            class="text-white font-bold">performance</span>, <span
-                            class="text-white font-bold">accessibility</span>, and <span
-                            class="text-white font-bold">interactivity</span>. I leverage modern frameworks to bridge
+                            class="text-[var(--text-main)] font-bold">performance</span>, <span
+                            class="text-[var(--text-main)] font-bold">accessibility</span>, and <span
+                            class="text-[var(--text-main)] font-bold">interactivity</span>. I leverage modern frameworks
+                        to bridge
                         the gap between design and functional code.
                     </p>
                 </div>
@@ -106,73 +176,83 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                     <!-- HTML5 -->
-                    <div class="skill-card p-6 group">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg group-hover:text-orange-500 transition-colors"><i
+                            <h3 class="text-[var(--text-main)] text-lg group-hover:text-orange-500 transition-colors"><i
                                     class="fa fa-html5 mr-2"></i> HTML5</h3>
-                            <span class="text-gray-400 font-mono">95%</span>
+                            <span class="text-[var(--text-muted)] font-mono">95%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar bg-gradient-to-r from-orange-500 to-yellow-500"
-                                style="width: 95%; box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 shadow-[0_0_10px_rgba(255,165,0,0.5)] w-[95%] transition-all duration-[1.5s] ease-out">
+                            </div>
                         </div>
-                        <p class="text-xs text-gray-500 mt-2">Semantic Structure, SEO, Accessibility</p>
+                        <p class="text-xs text-[var(--text-muted)] mt-2">Semantic Structure, SEO, Accessibility</p>
                     </div>
 
                     <!-- CSS3 -->
-                    <div class="skill-card p-6 group">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg group-hover:text-blue-500 transition-colors"><i
+                            <h3 class="text-[var(--text-main)] text-lg group-hover:text-blue-500 transition-colors"><i
                                     class="fa fa-css3 mr-2"></i> CSS3 / SCSS</h3>
-                            <span class="text-gray-400 font-mono">90%</span>
+                            <span class="text-[var(--text-muted)] font-mono">90%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar bg-gradient-to-r from-blue-500 to-cyan-500"
-                                style="width: 90%; box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 shadow-[0_0_10px_rgba(0,0,255,0.5)] w-[90%] transition-all duration-[1.5s] ease-out">
+                            </div>
                         </div>
-                        <p class="text-xs text-gray-500 mt-2">Animations, Grid/Flexbox, Responsive Design</p>
+                        <p class="text-xs text-[var(--text-muted)] mt-2">Animations, Grid/Flexbox, Responsive Design</p>
                     </div>
 
                     <!-- JavaScript -->
-                    <div class="skill-card p-6 group">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg group-hover:text-yellow-400 transition-colors"><i
+                            <h3 class="text-[var(--text-main)] text-lg group-hover:text-yellow-400 transition-colors"><i
                                     class="fa fa-code mr-2"></i> JavaScript</h3>
-                            <span class="text-gray-400 font-mono">85%</span>
+                            <span class="text-[var(--text-muted)] font-mono">85%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar bg-gradient-to-r from-yellow-400 to-orange-400"
-                                style="width: 85%; box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 shadow-[0_0_10px_rgba(255,255,0,0.5)] w-[85%] transition-all duration-[1.5s] ease-out">
+                            </div>
                         </div>
-                        <p class="text-xs text-gray-500 mt-2">ES6+, DOM Manipulation, Async/Await</p>
+                        <p class="text-xs text-[var(--text-muted)] mt-2">ES6+, DOM Manipulation, Async/Await</p>
                     </div>
 
                     <!-- React -->
-                    <div class="skill-card p-6 group">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg group-hover:text-cyan-400 transition-colors"><i
+                            <h3 class="text-[var(--text-main)] text-lg group-hover:text-cyan-400 transition-colors"><i
                                     class="fa fa-react mr-2"></i> React.js</h3>
-                            <span class="text-gray-400 font-mono">80%</span>
+                            <span class="text-[var(--text-muted)] font-mono">80%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar bg-gradient-to-r from-cyan-400 to-blue-600"
-                                style="width: 80%; box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 shadow-[0_0_10px_rgba(0,255,255,0.5)] w-[80%] transition-all duration-[1.5s] ease-out">
+                            </div>
                         </div>
-                        <p class="text-xs text-gray-500 mt-2">Hooks, Context API, Next.js</p>
+                        <p class="text-xs text-[var(--text-muted)] mt-2">Hooks, Context API, Next.js</p>
                     </div>
 
                     <!-- Tailwind -->
-                    <div class="skill-card p-6 group">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg group-hover:text-teal-400 transition-colors"><i
+                            <h3 class="text-[var(--text-main)] text-lg group-hover:text-teal-400 transition-colors"><i
                                     class="fa fa-wind mr-2"></i> Tailwind CSS</h3>
-                            <span class="text-gray-400 font-mono">90%</span>
+                            <span class="text-[var(--text-muted)] font-mono">90%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar bg-gradient-to-r from-teal-400 to-green-400"
-                                style="width: 90%; box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-teal-400 to-green-400 shadow-[0_0_10px_rgba(0,255,255,0.5)] w-[90%] transition-all duration-[1.5s] ease-out">
+                            </div>
                         </div>
-                        <p class="text-xs text-gray-500 mt-2">Custom Themes, Rapid Prototyping</p>
+                        <p class="text-xs text-[var(--text-muted)] mt-2">Custom Themes, Rapid Prototyping</p>
                     </div>
 
                 </div>
@@ -180,41 +260,55 @@
 
             <!-- 3D & Graphics Section -->
             <div class="mb-16">
-                <h2 class="text-2xl category-title">3D & Graphics</h2>
+                <h2
+                    class="text-2xl text-primary border-b-2 border-secondary inline-block pb-2 mb-8 drop-shadow-[0_0_15px_rgba(0,191,255,0.4)]">
+                    3D & Graphics</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                     <!-- Blender -->
-                    <div class="skill-card p-6">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg"><i class="fa fa-cube text-orange-400 mr-2"></i> Blender</h3>
-                            <span class="text-gray-400">85%</span>
+                            <h3 class="text-[var(--text-main)] text-lg"><i class="fa fa-cube text-orange-400 mr-2"></i>
+                                Blender</h3>
+                            <span class="text-[var(--text-muted)]">85%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 85%"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-primary to-secondary shadow-[0_0_10px_var(--primary-color)] w-[85%] transition-width duration-[1.5s] ease-out">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Three.js -->
-                    <div class="skill-card p-6">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg"><i class="fa fa-cubes text-white mr-2"></i> Three.js / WebGL
+                            <h3 class="text-[var(--text-main)] text-lg"><i class="fa fa-cubes text-white mr-2"></i>
+                                Three.js / WebGL
                             </h3>
-                            <span class="text-gray-400">70%</span>
+                            <span class="text-[var(--text-muted)]">70%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 70%"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-primary to-secondary shadow-[0_0_10px_var(--primary-color)] w-[70%] transition-width duration-[1.5s] ease-out">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Photoshop -->
-                    <div class="skill-card p-6">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg"><i class="fa fa-picture-o text-blue-400 mr-2"></i> Photoshop
+                            <h3 class="text-[var(--text-main)] text-lg"><i
+                                    class="fa fa-picture-o text-blue-400 mr-2"></i> Photoshop
                             </h3>
-                            <span class="text-gray-400">90%</span>
+                            <span class="text-[var(--text-muted)]">90%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 90%"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-primary to-secondary shadow-[0_0_10px_var(--primary-color)] w-[90%] transition-width duration-[1.5s] ease-out">
+                            </div>
                         </div>
                     </div>
 
@@ -223,29 +317,39 @@
 
             <!-- Backend & Tools Section -->
             <div class="mb-16">
-                <h2 class="text-2xl category-title">Backend & Tools</h2>
+                <h2
+                    class="text-2xl text-primary border-b-2 border-secondary inline-block pb-2 mb-8 drop-shadow-[0_0_15px_rgba(0,191,255,0.4)]">
+                    Backend & Tools</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                     <!-- Node.js -->
-                    <div class="skill-card p-6">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg"><i class="fa fa-server text-green-500 mr-2"></i> Node.js</h3>
-                            <span class="text-gray-400">75%</span>
+                            <h3 class="text-[var(--text-main)] text-lg"><i class="fa fa-server text-green-500 mr-2"></i>
+                                Node.js</h3>
+                            <span class="text-[var(--text-muted)]">75%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 75%"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-primary to-secondary shadow-[0_0_10px_var(--primary-color)] w-[75%] transition-width duration-[1.5s] ease-out">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Git -->
-                    <div class="skill-card p-6">
+                    <div
+                        class="bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-2xl rounded-xl transition-all duration-300 relative overflow-hidden p-6 group hover:-translate-y-1 hover:bg-[var(--glass-bg)] hover:border-primary hover:shadow-[0_0_15px_var(--shadow-color)]">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-white text-lg"><i class="fa fa-github text-white mr-2"></i> Git / Version
+                            <h3 class="text-[var(--text-main)] text-lg"><i class="fa fa-github text-white mr-2"></i> Git
+                                / Version
                                 Control</h3>
-                            <span class="text-gray-400">85%</span>
+                            <span class="text-[var(--text-muted)]">85%</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 85%"></div>
+                        <div class="bg-black/50 rounded-full h-2.5 w-full mt-4 overflow-hidden relative">
+                            <div
+                                class="h-full rounded-full bg-gradient-to-r from-primary to-secondary shadow-[0_0_10px_var(--primary-color)] w-[85%] transition-width duration-[1.5s] ease-out">
+                            </div>
                         </div>
                     </div>
 
@@ -256,8 +360,7 @@
 
         <!-- FOOTER -->
         <!-- PREMIUM FOOTER -->
-        <footer
-            class="bg-gradient-to-t from-black to-[#050505] border-t border-cyan-400/10 pt-16 mt-12 font-sans relative">
+        <footer class="bg-black border-t border-cyan-400/10 pt-16 mt-12 font-sans relative">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-8 pb-10">
                 <!-- Brand Col -->
                 <div class="footer-col">

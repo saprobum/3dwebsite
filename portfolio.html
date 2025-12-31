@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden w-full">
 
 <head>
     <meta charset="UTF-8">
@@ -9,12 +9,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#00ffff',
-                        secondary: '#00BFFF',
-                        navy: '#050A19',
+                        primary: 'var(--primary-color)',
+                        secondary: 'var(--secondary-color)',
+                        navy: 'var(--bg-dark)',
                     }
                 }
             }
@@ -35,23 +36,6 @@
     <!--<![endif]-->
     <style>
         /* Portfolio Specific Overrides & Premium Styling */
-        :root {
-            --primary-color: #00ffff;
-            --secondary-color: #00BFFF;
-            --bg-dark: #050A19;
-            --card-bg: rgba(10, 20, 30, 0.65);
-            --text-main: #e0e0e0;
-            --font-display: 'Orbitron', sans-serif;
-            --font-body: 'Roboto', sans-serif;
-        }
-
-        body {
-            font-family: var(--font-body);
-            color: var(--text-main);
-            /* Ensure background is consistent if base css differs */
-            background-color: var(--bg-dark);
-        }
-
         h1,
         h2,
         h3,
@@ -444,10 +428,17 @@
     </style>
 </head>
 
-<body class="portfolio-page">
+<body
+    class="portfolio-page overflow-x-hidden w-full bg-gray-50 dark:bg-[#050A19] text-gray-900 dark:text-gray-100 transition-colors duration-300">
     <div id="content">
+        <!-- Theme Switcher -->
+        <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+            <i class="fa fa-moon-o"></i>
+        </button>
+
         <!-- HEADER (Kept from Index) -->
-        <header onclick="specles()">
+        <header onclick="specles()"
+            class="bg-gray-100 dark:bg-[rgba(5,10,25,0.95)] p-[30px] min-h-[120px] relative overflow-hidden transition-colors duration-300 flex items-center justify-center min-[576px]:col-span-6 min-[576px]:row-start-1 min-[576px]:row-end-2 box-border group shadow-md dark:shadow-none border-b border-gray-200 dark:border-none">
             <ul id="rotateh" class="specles">
                 <!-- Particles kept for consistency -->
                 <li>1</li>
@@ -469,34 +460,66 @@
                 <li>17</li>
                 <li>18</li>
             </ul>
-            <h1 class="brand" id="logop">logo</h1>
+            <h1 class="w-[70px] h-[70px] absolute bg-no-repeat bg-center bg-cover indent-[-100000px] top-1/2 -translate-y-1/2 left-5 rounded-full transition-all duration-200 hover:shadow-[2px_2px_10px_2px_skyblue,-2px_-2px_10px_2px_skyblue,inset_-2px_-2px_10px_2px_#00ffff,inset_2px_2px_10px_2px_skyblue] font-display uppercase tracking-[2px]"
+                id="logop">logo</h1>
 
-            <div class="collapse-button">
-                <a href="#" class="collapse" onclick="add()">
-                    <span></span><span></span><span></span>
-                </a>
-            </div>
+            <button
+                class="min-[576px]:hidden absolute top-1/2 -translate-y-1/2 right-4 z-[9999] w-12 h-12 flex flex-col items-center justify-center gap-1.5 bg-cyan-500/20 border-2 border-cyan-400 rounded-lg hover:bg-cyan-500/40 hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,191,255,0.4)] hover:shadow-[0_0_25px_rgba(0,191,255,0.7)]"
+                id="hamburger-btn">
+                <span
+                    class="block w-7 h-0.5 bg-cyan-400 rounded-sm shadow-[0_0_10px_#00BFFF] transition-all duration-300"></span>
+                <span
+                    class="block w-7 h-0.5 bg-cyan-400 rounded-sm shadow-[0_0_10px_#00BFFF] transition-all duration-300"></span>
+                <span
+                    class="block w-7 h-0.5 bg-cyan-400 rounded-sm shadow-[0_0_10px_#00BFFF] transition-all duration-300"></span>
+            </button>
 
-            <div id="social">
-                <ul>
-                    <li onmouseover="pro()"><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+            <div id="social"
+                class="hidden min-[576px]:block absolute top-[15%] -left-[15px] w-[10px] h-[30px] z-[1] before:content-[''] before:w-[10px] before:h-[30px] before:bg-gradient-to-b before:from-transparent before:to-[var(--primary-color)] before:absolute before:z-[-1] before:shadow-[2px_2px_5px_1px_var(--primary-color),-2px_-2px_5px_1px_var(--primary-color)] hover:right-[-12px] transition-all duration-300">
+                <ul class="flex justify-end p-5 skew-x-[20deg] gap-4">
+                    <li onmouseover="pro()">
+                        <a href="#"
+                            class="text-[var(--primary-color)] p-2.5 border-2 border-groove border-[var(--primary-color)] rounded-[20%] hover:scale-110 hover:shadow-[0_0_10px_var(--primary-color)] transition-transform">
+                            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        </a>
                     </li>
-                    <li onmouseover="pro()"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li onmouseover="pro()"><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                    <li onmouseover="pro()">
+                        <a href="#"
+                            class="text-[var(--primary-color)] p-2.5 border-2 border-groove border-[var(--primary-color)] rounded-[20%] hover:scale-110 hover:shadow-[0_0_10px_var(--primary-color)] transition-transform">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li onmouseover="pro()">
+                        <a href="#"
+                            class="text-[var(--primary-color)] p-2.5 border-2 border-groove border-[var(--primary-color)] rounded-[20%] hover:scale-110 hover:shadow-[0_0_10px_var(--primary-color)] transition-transform">
+                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </header>
 
         <!-- NAVIGATION (Kept from Index) -->
         <!--starting of navbar-->
-        <div class="navbar" id="navigation">
-            <nav id="nav">
-                <ul>
-                    <li onmouseover="pro()"><a id="firsta" href="index.html">Home</a></li>
-                    <li onmouseover="pro()"><a href="about.html">About</a></li>
-                    <li onmouseover="pro()"><a href="portfolio.html">Portfolio</a></li>
-                    <li onmouseover="pro()"><a href="skills.html">Skills</a></li>
-                    <li onmouseover="pro()"><a id="lasta" href="contact.html">Contact</a></li>
+        <div class="navbar min-[576px]:col-span-6 min-[576px]:row-start-2 min-[576px]:row-end-3 bg-blue-50/50 dark:bg-[rgba(5,10,25,0.8)] shadow-[var(--nav-inner-glow),0px_2px_12px_1px_black]"
+            id="navigation">
+            <nav id="nav" class="min-[576px]:block">
+                <ul class="flex flex-wrap justify-center">
+                    <li onmouseover="pro()"><a id="firsta" href="index.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Home</a>
+                    </li>
+                    <li onmouseover="pro()"><a href="about.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">About</a>
+                    </li>
+                    <li onmouseover="pro()"><a href="portfolio.html"
+                            class="block p-2.5 text-center flex items-center justify-center min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-blue-400 dark:border-cyan-400 transition-all duration-300 font-bold bg-blue-100 dark:bg-transparent text-blue-700 dark:text-cyan-400 dark:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] shadow-inner dark:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Portfolio</a>
+                    </li>
+                    <li onmouseover="pro()"><a href="skills.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Skills</a>
+                    </li>
+                    <li onmouseover="pro()"><a id="lasta" href="contact.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Contact</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -504,148 +527,228 @@
         <!--        end of navbar       -->
 
         <!-- MAIN CONTENT -->
-        <main>
-            <div class="portfolio-hero">
-                <h1>Selected Works</h1>
-                <p>Exploring the intersection of Design, Code, and 3D Graphics.</p>
+        <main
+            class="w-full relative block bg-transparent perspective-none transform-style-flat overflow-visible min-h-[80vh] pb-12">
+            <!-- Hero -->
+            <div
+                class="text-center pt-20 px-5 pb-10 bg-[radial-gradient(circle_at_center,var(--border-glow)_0%,transparent_70%)] relative">
+                <h1
+                    class="text-5xl text-primary mb-3 font-display uppercase tracking-wider drop-shadow-[0_0_10px_rgba(0,255,255,0.5)] animate-pulse">
+                    Selected Works</h1>
+                <p class="text-[var(--text-muted)] text-lg max-w-xl mx-auto">Exploring the intersection of Design, Code,
+                    and 3D
+                    Graphics.</p>
             </div>
 
-            <div class="portfolio-container">
-                <div class="portfolio-grid">
+            <!-- Portfolio Grid -->
+            <div class="max-w-[1400px] mx-auto px-5 py-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
                     <!-- Item 1: 3D Model -->
-                    <div class="portfolio-card type-3d">
-                        <div class="card-image">
+                    <div
+                        class="bg-white dark:bg-[#0a1025] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden relative backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-500 dark:hover:border-cyan-400 hover:shadow-xl dark:hover:shadow-[0_10px_30px_rgba(0,191,255,0.2)] flex flex-col group">
+                        <div
+                            class="h-[200px] bg-gray-200 dark:bg-gradient-to-tr dark:from-[#111] dark:to-[#222] relative overflow-hidden flex items-center justify-center border-b border-gray-200 dark:border-white/10 before:content-[''] before:absolute before:w-full before:h-full before:bg-cover before:bg-center before:opacity-60 before:transition-opacity before:duration-300 group-hover:before:opacity-90">
                             <!-- Placeholder Icon -->
-                            <i class="fa fa-cube card-icon"></i>
+                            <i
+                                class="fa fa-cube text-5xl text-white/20 z-10 transition-all duration-300 group-hover:text-primary group-hover:scale-110"></i>
                         </div>
-                        <div class="card-content">
+                        <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="card-title">Cyber Samurai <i class="fa fa-external-link"
-                                        style="font-size:0.7em"></i></h3>
-                                <p class="card-desc">High-fidelity 3D character model optimized for game engines.
+                                <h3
+                                    class="text-2xl text-blue-700 dark:text-cyan-400 mb-3 flex items-center justify-between font-display">
+                                    Cyber Samurai <i class="fa fa-external-link text-sm"></i></h3>
+                                <p
+                                    class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 font-body text-left">
+                                    High-fidelity
+                                    3D character model optimized for game engines.
                                     Texturing done in Substance Painter.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Blender</span>
-                                    <span class="tech-pill">Substance</span>
-                                    <span class="tech-pill">ZBrush</span>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Blender</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Substance</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">ZBrush</span>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <a href="#" class="btn-view">View Model</a>
+                            <div class="mt-auto">
+                                <a href="#"
+                                    class="block w-full py-3 bg-transparent text-gray-800 dark:text-gray-100 border border-blue-600 dark:border-cyan-400 text-center font-display uppercase text-sm transition-all duration-300 relative overflow-hidden z-[1] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-blue-600 dark:before:bg-cyan-400 before:transition-all before:duration-300 before:-z-[1] hover:before:left-0 hover:text-white dark:hover:text-black hover:shadow-lg dark:hover:shadow-[0_0_15px_var(--primary-color)]">View
+                                    Model</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Item 2: Web App -->
-                    <div class="portfolio-card type-web">
-                        <div class="card-image">
-                            <i class="fa fa-code card-icon"></i>
+                    <div
+                        class="bg-white dark:bg-[#0a1025] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden relative backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-500 dark:hover:border-cyan-400 hover:shadow-xl dark:hover:shadow-[0_10px_30px_rgba(0,191,255,0.2)] flex flex-col group">
+                        <div
+                            class="h-[200px] bg-gray-200 dark:bg-gradient-to-tr dark:from-[#111] dark:to-[#222] relative overflow-hidden flex items-center justify-center border-b border-gray-200 dark:border-white/10 before:content-[''] before:absolute before:w-full before:h-full before:bg-cover before:bg-center before:opacity-60 before:transition-opacity before:duration-300 group-hover:before:opacity-90">
+                            <i
+                                class="fa fa-code text-5xl text-white/20 z-10 transition-all duration-300 group-hover:text-primary group-hover:scale-110"></i>
                         </div>
-                        <div class="card-content">
+                        <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="card-title">Neon Dashboard <i class="fa fa-external-link"
-                                        style="font-size:0.7em"></i></h3>
-                                <p class="card-desc">A React-based analytics dashboard with teal-time data visualization
+                                <h3
+                                    class="text-2xl text-blue-700 dark:text-cyan-400 mb-3 flex items-center justify-between font-display">
+                                    Neon Dashboard <i class="fa fa-external-link text-sm"></i></h3>
+                                <p
+                                    class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 font-body text-left">
+                                    A
+                                    React-based
+                                    analytics dashboard with real-time data visualization
                                     and dark mode UI specific.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">React</span>
-                                    <span class="tech-pill">D3.js</span>
-                                    <span class="tech-pill">Node.js</span>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">React</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">D3.js</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Node.js</span>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <a href="#" class="btn-view">Live Demo</a>
+                            <div class="mt-auto">
+                                <a href="#"
+                                    class="block w-full py-3 bg-transparent text-gray-800 dark:text-gray-100 border border-blue-600 dark:border-cyan-400 text-center font-display uppercase text-sm transition-all duration-300 relative overflow-hidden z-[1] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-blue-600 dark:before:bg-cyan-400 before:transition-all before:duration-300 before:-z-[1] hover:before:left-0 hover:text-white dark:hover:text-black hover:shadow-lg dark:hover:shadow-[0_0_15px_var(--primary-color)]">Live
+                                    Demo</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Item 3: Design -->
-                    <div class="portfolio-card type-design">
-                        <div class="card-image">
-                            <i class="fa fa-paint-brush card-icon"></i>
+                    <div
+                        class="bg-white dark:bg-[#0a1025] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden relative backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-500 dark:hover:border-cyan-400 hover:shadow-xl dark:hover:shadow-[0_10px_30px_rgba(0,191,255,0.2)] flex flex-col group">
+                        <div
+                            class="h-[200px] bg-gray-200 dark:bg-gradient-to-tr dark:from-[#111] dark:to-[#222] relative overflow-hidden flex items-center justify-center border-b border-gray-200 dark:border-white/10 before:content-[''] before:absolute before:w-full before:h-full before:bg-cover before:bg-center before:opacity-60 before:transition-opacity before:duration-300 group-hover:before:opacity-90">
+                            <i
+                                class="fa fa-paint-brush text-5xl text-white/20 z-10 transition-all duration-300 group-hover:text-primary group-hover:scale-110"></i>
                         </div>
-                        <div class="card-content">
+                        <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="card-title">Brand Identity Y <i class="fa fa-external-link"
-                                        style="font-size:0.7em"></i></h3>
-                                <p class="card-desc">Complete corporate identity package including logo, stationery, and
+                                <h3
+                                    class="text-2xl text-blue-700 dark:text-cyan-400 mb-3 flex items-center justify-between font-display">
+                                    Brand Identity Y <i class="fa fa-external-link text-sm"></i></h3>
+                                <p
+                                    class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 font-body text-left">
+                                    Complete
+                                    corporate identity package including logo, stationery, and
                                     brand guidelines.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Illustrator</span>
-                                    <span class="tech-pill">Photoshop</span>
-                                    <span class="tech-pill">Figma</span>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Illustrator</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Photoshop</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Figma</span>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <a href="#" class="btn-view">View Case Study</a>
+                            <div class="mt-auto">
+                                <a href="#"
+                                    class="block w-full py-3 bg-transparent text-gray-800 dark:text-gray-100 border border-blue-600 dark:border-cyan-400 text-center font-display uppercase text-sm transition-all duration-300 relative overflow-hidden z-[1] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-blue-600 dark:before:bg-cyan-400 before:transition-all before:duration-300 before:-z-[1] hover:before:left-0 hover:text-white dark:hover:text-black hover:shadow-lg dark:hover:shadow-[0_0_15px_var(--primary-color)]">View
+                                    Case Study</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Item 4: Animation -->
-                    <div class="portfolio-card type-3d">
-                        <div class="card-image">
-                            <i class="fa fa-film card-icon"></i>
+                    <div
+                        class="bg-white dark:bg-[#0a1025] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden relative backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-500 dark:hover:border-cyan-400 hover:shadow-xl dark:hover:shadow-[0_10px_30px_rgba(0,191,255,0.2)] flex flex-col group">
+                        <div
+                            class="h-[200px] bg-gray-200 dark:bg-gradient-to-tr dark:from-[#111] dark:to-[#222] relative overflow-hidden flex items-center justify-center border-b border-gray-200 dark:border-white/10 before:content-[''] before:absolute before:w-full before:h-full before:bg-cover before:bg-center before:opacity-60 before:transition-opacity before:duration-300 group-hover:before:opacity-90">
+                            <i
+                                class="fa fa-film text-5xl text-white/20 z-10 transition-all duration-300 group-hover:text-primary group-hover:scale-110"></i>
                         </div>
-                        <div class="card-content">
+                        <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="card-title">Motion Reel 2024 <i class="fa fa-external-link"
-                                        style="font-size:0.7em"></i></h3>
-                                <p class="card-desc">A compilation of motion graphics projects, kinetic typography, and
+                                <h3
+                                    class="text-2xl text-blue-700 dark:text-cyan-400 mb-3 flex items-center justify-between font-display">
+                                    Motion Reel 2024 <i class="fa fa-external-link text-sm"></i></h3>
+                                <p class="text-[var(--text-muted)] text-sm leading-relaxed mb-5 font-body text-left">A
+                                    compilation
+                                    of motion graphics projects, kinetic typography, and
                                     VFX shots.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">After Effects</span>
-                                    <span class="tech-pill">Cinema 4D</span>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">After
+                                        Effects</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Cinema
+                                        4D</span>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <a href="#" class="btn-view">Watch Video</a>
+                            <div class="mt-auto">
+                                <a href="#"
+                                    class="block w-full py-3 bg-transparent text-gray-800 dark:text-gray-100 border border-blue-600 dark:border-cyan-400 text-center font-display uppercase text-sm transition-all duration-300 relative overflow-hidden z-[1] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-blue-600 dark:before:bg-cyan-400 before:transition-all before:duration-300 before:-z-[1] hover:before:left-0 hover:text-white dark:hover:text-black hover:shadow-lg dark:hover:shadow-[0_0_15px_var(--primary-color)]">Watch
+                                    Video</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Item 5: UI Concept -->
-                    <div class="portfolio-card type-design">
-                        <div class="card-image">
-                            <i class="fa fa-mobile card-icon"></i>
+                    <div
+                        class="bg-white dark:bg-[#0a1025] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden relative backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-500 dark:hover:border-cyan-400 hover:shadow-xl dark:hover:shadow-[0_10px_30px_rgba(0,191,255,0.2)] flex flex-col group">
+                        <div
+                            class="h-[200px] bg-gray-200 dark:bg-gradient-to-tr dark:from-[#111] dark:to-[#222] relative overflow-hidden flex items-center justify-center border-b border-gray-200 dark:border-white/10 before:content-[''] before:absolute before:w-full before:h-full before:bg-cover before:bg-center before:opacity-60 before:transition-opacity before:duration-300 group-hover:before:opacity-90">
+                            <i
+                                class="fa fa-mobile text-5xl text-white/20 z-10 transition-all duration-300 group-hover:text-primary group-hover:scale-110"></i>
                         </div>
-                        <div class="card-content">
+                        <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="card-title">FinTech App <i class="fa fa-external-link"
-                                        style="font-size:0.7em"></i></h3>
-                                <p class="card-desc">Clean and intuitive mobile app interface design for a modern
+                                <h3
+                                    class="text-2xl text-blue-700 dark:text-cyan-400 mb-3 flex items-center justify-between font-display">
+                                    FinTech App <i class="fa fa-external-link text-sm"></i></h3>
+                                <p
+                                    class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 font-body text-left">
+                                    Clean and
+                                    intuitive mobile app interface design for a modern
                                     banking solution.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Figma</span>
-                                    <span class="tech-pill">Prototyping</span>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Figma</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Prototyping</span>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <a href="#" class="btn-view">View Prototype</a>
+                            <div class="mt-auto">
+                                <a href="#"
+                                    class="block w-full py-3 bg-transparent text-gray-800 dark:text-gray-100 border border-blue-600 dark:border-cyan-400 text-center font-display uppercase text-sm transition-all duration-300 relative overflow-hidden z-[1] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-blue-600 dark:before:bg-cyan-400 before:transition-all before:duration-300 before:-z-[1] hover:before:left-0 hover:text-white dark:hover:text-black hover:shadow-lg dark:hover:shadow-[0_0_15px_var(--primary-color)]">View
+                                    Prototype</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Item 6: E-Commerce -->
-                    <div class="portfolio-card type-web">
-                        <div class="card-image">
-                            <i class="fa fa-shopping-cart card-icon"></i>
+                    <div
+                        class="bg-white dark:bg-[#0a1025] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden relative backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-500 dark:hover:border-cyan-400 hover:shadow-xl dark:hover:shadow-[0_10px_30px_rgba(0,191,255,0.2)] flex flex-col group">
+                        <div
+                            class="h-[200px] bg-gray-200 dark:bg-gradient-to-tr dark:from-[#111] dark:to-[#222] relative overflow-hidden flex items-center justify-center border-b border-gray-200 dark:border-white/10 before:content-[''] before:absolute before:w-full before:h-full before:bg-cover before:bg-center before:opacity-60 before:transition-opacity before:duration-300 group-hover:before:opacity-90">
+                            <i
+                                class="fa fa-shopping-cart text-5xl text-white/20 z-10 transition-all duration-300 group-hover:text-primary group-hover:scale-110"></i>
                         </div>
-                        <div class="card-content">
+                        <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="card-title">ShopX Platform <i class="fa fa-external-link"
-                                        style="font-size:0.7em"></i></h3>
-                                <p class="card-desc">Full-stack e-commerce solution with payment gateway integration and
+                                <h3
+                                    class="text-2xl text-blue-700 dark:text-cyan-400 mb-3 flex items-center justify-between font-display">
+                                    ShopX Platform <i class="fa fa-external-link text-sm"></i></h3>
+                                <p
+                                    class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 font-body text-left">
+                                    Full-stack
+                                    e-commerce solution with payment gateway integration and
                                     inventory management.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-pill">Vue.js</span>
-                                    <span class="tech-pill">Laravel</span>
-                                    <span class="tech-pill">Stripe</span>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Vue.js</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Laravel</span>
+                                    <span
+                                        class="text-xs bg-blue-100 dark:bg-cyan-400/10 text-blue-700 dark:text-cyan-400 px-2.5 py-1 rounded-xl border border-blue-200 dark:border-cyan-400/30 uppercase">Stripe</span>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <a href="#" class="btn-view">Visit Store</a>
+                            <div class="mt-auto">
+                                <a href="#"
+                                    class="block w-full py-3 bg-transparent text-gray-800 dark:text-gray-100 border border-blue-600 dark:border-cyan-400 text-center font-display uppercase text-sm transition-all duration-300 relative overflow-hidden z-[1] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-blue-600 dark:before:bg-cyan-400 before:transition-all before:duration-300 before:-z-[1] hover:before:left-0 hover:text-white dark:hover:text-black hover:shadow-lg dark:hover:shadow-[0_0_15px_var(--primary-color)]">Visit
+                                    Store</a>
                             </div>
                         </div>
                     </div>
@@ -656,7 +759,7 @@
 
         <!-- PREMIUM FOOTER -->
         <!-- PREMIUM FOOTER -->
-        <footer class="bg-navy border-t border-cyan-400/10 pt-16 mt-12 font-sans relative">
+        <footer class="bg-black border-t border-cyan-400/10 pt-16 mt-12 font-sans relative">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-8 pb-10">
                 <!-- Brand Col -->
                 <div class="footer-col">

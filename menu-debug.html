@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #050A19;
+            color: white;
+        }
+
+        .test-info {
+            padding: 20px;
+            background: #1a1a2e;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .status.success {
+            background: #00ff00;
+            color: black;
+        }
+
+        .status.error {
+            background: #ff0000;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #00BFFF;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #0099cc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-info">
+        <h1>🔍 Mobile Menu Debugging Tool</h1>
+        <p>This page helps you test if the mobile menu is working correctly.</p>
+
+        <div id="status-container"></div>
+
+        <h2>Quick Tests:</h2>
+        <button onclick="testNavigationElement()">Test Navigation Element</button>
+        <button onclick="testAddFunction()">Test add() Function</button>
+        <button onclick="testShowClass()">Toggle .show Class</button>
+        <button onclick="checkCSS()">Check CSS</button>
+
+        <h2>Instructions:</h2>
+        <ol>
+            <li>Open your actual website (index.html, about.html, etc.)</li>
+            <li>Open browser DevTools (F12)</li>
+            <li>Go to Console tab</li>
+            <li>Resize window to mobile size (< 576px width)</li>
+            <li>Click the hamburger menu</li>
+            <li>Check console for "Menu toggled" message</li>
+            <li>Inspect the #navigation element to see if .show class is added</li>
+        </ol>
+
+        <h2>Common Issues:</h2>
+        <ul>
+            <li><strong>Menu not visible:</strong> Check if CSS file is loaded</li>
+            <li><strong>Click not working:</strong> Check browser console for JavaScript errors</li>
+            <li><strong>Class not toggling:</strong> Verify element ID is "navigation"</li>
+            <li><strong>CSS not applying:</strong> Clear browser cache (Ctrl+Shift+R)</li>
+        </ul>
+    </div>
+
+    <script>
+        function addStatus(message, isSuccess) {
+            const container = document.getElementById('status-container');
+            const div = document.createElement('div');
+            div.className = 'status ' + (isSuccess ? 'success' : 'error');
+            div.textContent = message;
+            container.appendChild(div);
+        }
+
+        function testNavigationElement() {
+            const nav = document.getElementById('navigation');
+            if (nav) {
+                addStatus('✓ Navigation element found!', true);
+            } else {
+                addStatus('✗ Navigation element NOT found. Check if ID="navigation" exists.', false);
+            }
+        }
+
+        function testAddFunction() {
+            if (typeof add === 'function') {
+                addStatus('✓ add() function exists!', true);
+                try {
+                    add();
+                    addStatus('✓ add() function executed without errors!', true);
+                } catch (e) {
+                    addStatus('✗ Error executing add(): ' + e.message, false);
+                }
+            } else {
+                addStatus('✗ add() function NOT found. Check if script.js is loaded.', false);
+            }
+        }
+
+        function testShowClass() {
+            const nav = document.getElementById('navigation');
+            if (nav) {
+                nav.classList.toggle('show');
+                const hasShow = nav.classList.contains('show');
+                addStatus('Show class is now: ' + (hasShow ? 'ADDED' : 'REMOVED'), true);
+            } else {
+                addStatus('✗ Cannot toggle - navigation element not found', false);
+            }
+        }
+
+        function checkCSS() {
+            const nav = document.getElementById('navigation');
+            if (nav) {
+                const navElement = nav.querySelector('nav');
+                if (navElement) {
+                    const display = window.getComputedStyle(navElement).display;
+                    addStatus('Navigation display style: ' + display, true);
+                } else {
+                    addStatus('✗ <nav> element not found inside #navigation', false);
+                }
+            } else {
+                addStatus('✗ #navigation element not found', false);
+            }
+        }
+    </script>
+</body>
+
+</html>

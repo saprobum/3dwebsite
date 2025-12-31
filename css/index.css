@@ -1,57 +1,31 @@
 @import url("animation.css");
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
 
-/*universal selector for resetting*/
+:root {
+  --primary-color: #00ffff;
+  --secondary-color: #00BFFF;
+  --bg-dark: #050A19;
+  --bg-light: #f9fafb;
+  --bg-header: rgba(5, 10, 25, 0.95);
+  --font-display: 'Orbitron', sans-serif;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+}
+
+/* Minimal custom resets - Tailwind handles most */
 * {
-  padding: 0px;
-  margin: 0px;
-  list-style-type: none;
-  text-decoration: none;
   box-sizing: border-box;
-  font-family: helvetica;
-  text-align: center;
-
-  text-transform: uppercase;
 }
 
-/*universal selctor for resetting*/
-
-/* for extra small screen*/
-
-body {
-  background: #050A19;
+html {
+  scroll-behavior: smooth;
 }
 
-#content {
-  max-width: 95%;
-  margin: 0px auto;
-  position: relative;
-}
+/* Theme and layout - Using Tailwind dark mode classes in HTML */
 
-/* header rules starts */
-
-header {
-  background: black;
-  padding: 30px;
-  position: relative;
-  overflow: hidden;
-}
-
-/*logo starts*/
+/* Logo background - Tailwind bg-[url()] doesn't work well, keeping in CSS */
 #logop {
-  width: 70px;
-  height: 70px;
-  position: absolute;
   background: url(../images/logo.svg) no-repeat 50% 50% / cover;
-  text-indent: -100000px;
-  top: 25%;
-  border-radius: 50%;
-  transition: all 0.2s ease-in;
-}
-
-#logop:hover {
-  box-shadow: 2px 2px 10px 2px skyblue, -2px -2px 10px 2px skyblue,
-    inset -2px -2px 10px 2px #00ffff, inset 2px 2px 10px 2px skyblue;
 }
 
 /*logo ends*/
@@ -85,43 +59,44 @@ header #social {
 
 /*hamburger/ collapse button starts*/
 
-.collapse-button {
-  display: block;
-  max-width: 40px;
-  height: 40px;
-  position: relative;
-  top: 13px;
-  right: -90%;
+/* Particles z-index and interaction fix */
+.specles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.collapse-button span {
-  display: block;
-  margin: 20% auto;
-  width: 80%;
-  height: 2px;
-  background: skyblue;
-  opacity: 0.9;
-}
+/*hamburger/ collapse button - Now using Tailwind classes in HTML */
 
-/*hamburger/ collapse  button ends*/
 
 /* header rules ends */
-/*	 navbar starts*/
+/* navbar - Using Tailwind classes in HTML */
 
-.navbar {
-  display: block;
+/* Mobile Menu - Minimal CSS for toggle */
+@media (max-width: 575px) {
+  #navigation nav {
+    display: none;
+  }
+
+  #navigation.show nav {
+    display: block !important;
+  }
 }
 
 /*navbar ends*/
 /* main rules starts */
 main {
   position: relative;
-  background: black;
+  background: var(--bg-header);
   /* animation: background 6s linear infinite; */
   transform-style: preserve-3d;
   perspective: 1000px;
   overflow: hidden;
-  color: skyblue;
+  color: var(--primary-color);
   height: 330px;
   /* padding:20px */
 }
@@ -143,21 +118,68 @@ main #rotatep {
 
 /* PREMIUM THEME STYLES - MERGED */
 
+/* --- THEME SYSTEM --- */
 :root {
-  --primary-color: #00BFFF;
-  --secondary-color: #ffb300;
-  --bg-dark: #050A19;
-  --card-bg: rgba(10, 20, 30, 0.65);
-  --text-main: #e0e0e0;
+  /* LIGHT MODE (Default) - High Contrast Lab Style */
+  --primary-color: #005f7a;
+  --primary-color-rgb: 0, 95, 122;
+  /* Darker cyan for readability on white */
+  --secondary-color: #a36d00;
+  --bg-dark: #f8fafc;
+  --bg-header: #ffffff;
+  --nav-bg: rgba(248, 250, 252, 0.8);
+  --nav-border-width: 1px;
+  --nav-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --nav-inner-glow: none;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --glow-color: rgba(0, 95, 122, 0.2);
+  --border-glow: rgba(0, 95, 122, 0.1);
+
   --font-display: 'Orbitron', sans-serif;
   --font-body: 'Roboto', sans-serif;
+}
+
+[data-theme="dark"] {
+  /* DARK MODE (Cyberpunk) */
+  --primary-color: #00BFFF;
+  --primary-color-rgb: 0, 191, 255;
+  --secondary-color: #ffb300;
+  --bg-dark: #050A19;
+  --bg-header: #000000;
+  --nav-bg: rgba(0, 0, 0, 0.7);
+  --nav-border-width: 3px;
+  --nav-shadow: inset 0px 1px 20px 2px var(--glow-color);
+  --nav-inner-glow: inset 1px 1px 10px 2px var(--primary-color), inset -1px -1px 10px 2px var(--primary-color);
+  --card-bg: rgba(10, 20, 30, 0.75);
+  --glass-bg: rgba(10, 20, 30, 0.65);
+  --text-main: #e0e0e0;
+  --text-muted: #aaaaaa;
+  --border-color: rgba(0, 191, 255, 0.2);
+  --shadow-color: rgba(0, 191, 255, 0.2);
+  --glow-color: rgba(0, 191, 255, 0.4);
+  --border-glow: rgba(0, 191, 255, 0.15);
+}
+
+
+/* Global Navbar Blur */
+.navbar {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 body {
   font-family: var(--font-body);
   color: var(--text-main);
   background-color: var(--bg-dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+
 
 h1,
 h2,
@@ -208,7 +230,7 @@ h6,
   background: var(--card-bg);
   padding: 20px;
   border-radius: 10px;
-  border: 1px solid rgba(0, 191, 255, 0.1);
+  border: 1px solid var(--border-color);
   transition: all 0.3s ease;
 }
 
@@ -234,23 +256,23 @@ h6,
 .info-text h3 {
   font-size: 1.1rem;
   margin-bottom: 5px;
-  color: white;
+  color: var(--text-main);
 }
 
 .info-text p {
-  color: #aaa;
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
 .contact-form-wrapper {
   flex: 1.5;
   min-width: 300px;
-  background: linear-gradient(145deg, rgba(10, 20, 30, 0.9), rgba(5, 10, 25, 0.95));
+  background: var(--card-bg);
   padding: 40px;
   border-radius: 15px;
   border: 2px solid var(--secondary-color);
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 25px rgba(0, 191, 255, 0.2), inset 0 0 20px rgba(0, 191, 255, 0.05);
+  box-shadow: 0 0 25px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -276,10 +298,10 @@ h6,
 
 .form-control {
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   padding: 15px;
-  color: white;
+  color: var(--text-main);
   font-family: var(--font-body);
   font-size: 1rem;
   border-radius: 5px;
@@ -289,8 +311,8 @@ h6,
 
 .form-control:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
-  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px var(--shadow-color);
+  background: var(--bg-header);
 }
 
 label {
@@ -331,7 +353,7 @@ textarea.form-control {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+  box-shadow: 0 0 15px var(--shadow-color);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -371,10 +393,10 @@ textarea.form-control {
 
 /* --- SKILLS PAGE --- */
 .skill-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 30px var(--shadow-color);
   border-radius: 12px;
   transition: all 0.3s ease;
   position: relative;
@@ -453,7 +475,7 @@ textarea.form-control {
 
 .project-card {
   background: var(--card-bg);
-  border: 1px solid rgba(0, 191, 255, 0.1);
+  border: 1px solid var(--border-color);
   border-radius: 15px;
   overflow: hidden;
   position: relative;
@@ -500,7 +522,7 @@ textarea.form-control {
 .project-card h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
-  color: white;
+  color: var(--text-main);
 }
 
 .project-tags {
@@ -632,103 +654,11 @@ textarea.form-control {
 
 /* --- ABOUT PAGE SPECIFIC STYLES --- */
 
-/* Skills Section Grid (Specific to About Page) */
-.skills-section {
-  max-width: 1000px;
-  margin: 20px auto 60px;
-  padding: 20px;
-}
 
-.skills-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: var(--secondary-color);
-}
+/* --- ABOUT PAGE SPECIFIC STYLES --- */
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-}
+/* Skills and Timeline styles have been refactored to Tailwind CSS and removed from here. */
 
-/* Timeline/Experience */
-.timeline-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  position: relative;
-}
-
-.timeline-section::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, transparent, var(--primary-color), transparent);
-  z-index: 0;
-}
-
-.timeline-item {
-  margin-bottom: 50px;
-  position: relative;
-  width: 50%;
-  z-index: 1;
-}
-
-.timeline-item:nth-child(odd) {
-  left: 0;
-  padding-right: 40px;
-  text-align: right;
-}
-
-.timeline-item:nth-child(even) {
-  left: 50%;
-  padding-left: 40px;
-  text-align: left;
-}
-
-.timeline-content {
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 0, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-.timeline-content:hover {
-  border-color: var(--secondary-color);
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
-}
-
-.timeline-year {
-  font-family: var(--font-display);
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-}
-
-.timeline-node {
-  position: absolute;
-  top: 20px;
-  width: 20px;
-  height: 20px;
-  background: #000;
-  border: 3px solid var(--secondary-color);
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.timeline-item:nth-child(odd) .timeline-node {
-  right: -10px;
-}
-
-.timeline-item:nth-child(even) .timeline-node {
-  left: -10px;
-}
 
 @media (max-width: 768px) {
   .timeline-section::before {
@@ -1006,76 +936,7 @@ aside:hover .asidewpr {
 /*class after the onclick event ends*/
 
 /* navbar div strats */
-.navbar {
-  box-shadow: inset 1px 1px 10px 2px skyblue, inset -1px -1px 10px 2px skyblue,
-    0px 2px 12px 1px;
-  background: #000;
-}
-
-nav {
-  display: none;
-}
-
-nav>ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-nav a {
-  background: linear-gradient(180deg,
-      rgba(0, 255, 255, 0.5) 1%,
-      transparent 90%,
-      skyblue);
-  display: block;
-  padding: 10px;
-  color: #fff;
-  min-width: 100px;
-  border-left: 3px groove skyblue;
-  border-right: 3px groove skyblue;
-  transition: all 300ms linear;
-  box-shadow: inset 0px 1px 20px 2px skyblue;
-}
-
-nav a:hover {
-  text-shadow: 1px 1px 2px skyblue, -1px -1px 2px skyblue;
-  box-shadow: inset 1px 1px 10px 2px skyblue;
-}
-
-#sub ul {
-  width: 100%;
-  position: absolute;
-  transform-origin: 0px 0px;
-  transform: rotate3d(0, 1, 0, 70deg);
-  transition: all 0.2s ease-in;
-  padding: 0px;
-  margin: 0px;
-  top: 140%;
-  opacity: 0;
-  visibility: hidden;
-
-  z-index: 99;
-  transform-style: preserve-3d;
-  perspective: 25px;
-}
-
-#sub:hover ul {
-  transform: rotate3d(0, 0, 0, 0deg);
-  top: 100%;
-  visibility: visible;
-  opacity: 1;
-}
-
-#sub ul a {
-  transform: rotate3d(1, 0, 0, 40deg);
-}
-
-#sub:hover a {
-  transform: rotate3d(0, 0, 0, 0deg);
-  opacity: 1;
-}
-
-/* navbar div ends */
+/* Navbar and Nav styles removed (Refactored to Tailwind) */
 .slider {
   display: block;
   position: relative;
@@ -1136,78 +997,164 @@ nav a:hover {
 
 /*rules fot the footer*/
 
-footer {
-  background: url(../images/net.jpg) no-repeat center / cover;
-  position: relative;
-}
-
-footer .list {
-  width: 100%;
-  padding: 10px 50px;
-  background: rgba(0, 0, 0, 0.7);
-}
-
-footer .list li {
-  color: aqua;
-  transition: all 0.5s linear;
-  padding: 5px;
-  font-size: 12px;
-  border-top: 3px solid #777;
-  border-bottom: 3px solid #777;
-  border-radius: 30px;
-  margin-bottom: 2px;
-}
-
-footer .list li:hover {
-  border-top: 3px solid aqua;
-  border-bottom: 3px groove skyblue;
-  border-radius: 30px;
-}
-
-/* footer social starts */
-footer #social {
-  display: block;
-  overflow: hidden;
-}
-
-footer #social ul {
-  display: flex;
-
-  flex-flow: row;
-  justify-content: space-around;
-}
-
-footer #social ul a {
-  color: white;
-  font-size: 20px;
-}
-
-/* footer ul social */
-
-#copy {
-  background: black;
-  color: aqua;
-  padding: 20px;
-}
-
-/*rules for the footer ends*/
+/* Old footer styles removed */
 
 #totop {
   position: fixed;
   bottom: 40px;
   right: 40px;
-  border: 2px solid skyblue;
-  color: skyblue;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
   cursor: pointer;
-  padding: 5px;
+  padding: 12px;
   display: none;
-  border-radius: 50% 50% 0px 0px;
-  transition: all 0.1s linear;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  background: var(--bg-header);
+  box-shadow: 0 0 15px var(--shadow-color);
+  font-family: var(--font-display);
+  font-size: 10px;
+  text-transform: uppercase;
+  width: 45px;
+  height: 45px;
+  line-height: normal;
+  display: none;
+  /* Ensure visibility for testing if needed, but script handles display */
+  align-items: center;
+  justify-content: center;
+}
+
+#theme-toggle {
+  position: fixed;
+  bottom: 40px;
+  right: 100px;
+  z-index: 10000;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--bg-header);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: rotate(45deg);
+  background: var(--primary-color);
+  color: var(--bg-header);
 }
 
 #totop:hover {
-  background: black;
-  box-shadow: 2px 2px 12px 1px skyblue, -2px -2px 12px 1px skyblue;
+  background: skyblue;
+  color: black;
+  box-shadow: 0 0 20px skyblue, 0 0 40px skyblue;
+  transform: translateY(-5px);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* ========================================
+   MOBILE MENU SYSTEM - ULTRA SPECIFIC
+   ======================================== */
+
+/* IMPORTANT: Override Tailwind's min-[576px]:block */
+/* Default: Hide navigation on ALL screens first */
+#navigation nav,
+#navigation #nav {
+  display: none !important;
+}
+
+/* Desktop: Always show navigation */
+@media (min-width: 576px) {
+
+  #navigation nav,
+  #navigation #nav {
+    display: block !important;
+  }
+}
+
+/* Mobile: Show navigation when .show class is added */
+@media (max-width: 575px) {
+
+  /* CRITICAL: Override the min-[576px]:block Tailwind class */
+  #navigation nav.min-\[576px\]\:block,
+  #navigation #nav.min-\[576px\]\:block {
+    display: none !important;
+  }
+
+  /* Show the nav when parent has .show class */
+  #navigation.show nav,
+  #navigation.show #nav,
+  #navigation.show nav.min-\[576px\]\:block,
+  #navigation.show #nav.min-\[576px\]\:block {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-height: 1000px !important;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  /* Stack menu items vertically on mobile */
+  #navigation.show nav ul,
+  #navigation.show #nav ul {
+    flex-direction: column !important;
+    width: 100%;
+  }
+
+  #navigation.show nav ul li,
+  #navigation.show #nav ul li {
+    width: 100%;
+    display: block !important;
+  }
+
+  #navigation.show nav ul li a,
+  #navigation.show #nav ul li a {
+    width: 100%;
+    display: block !important;
+    text-align: center;
+    padding: 15px !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* Position mobile menu */
+  #navigation.show {
+    position: relative;
+    z-index: 999;
+  }
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* universal rules ends */
@@ -1234,81 +1181,7 @@ footer #social ul a {
   }
 
   /*    grid rules starts*/
-  #content {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: minmax(auto, auto);
-    max-width: 100%;
-    margin: 0px auto;
-    position: relative;
-  }
-
-  /* header rules starts */
-
-  header {
-    grid-column: 1/7;
-    grid-row: 1/2;
-    padding: 70px;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  header #social:hover {
-    right: -12px;
-  }
-
-  header #social:after {
-    content: "";
-    width: 10px;
-    height: 30px;
-    left: -15px;
-    top: 15%;
-    background: linear-gradient(180deg, transparent, skyblue);
-    position: absolute;
-    z-index: -1;
-    box-shadow: 2px 2px 5px 1px skyblue, -2px -2px 5px 1px skyblue;
-  }
-
-  header #social ul {
-    transform: skew(20deg);
-    padding: 20px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  header #social a {
-    color: skyblue;
-    padding: 10px;
-    border: 2px groove skyblue;
-    border-radius: 20%;
-  }
-
-  header #social a:hover {
-    text-shadow: 7px 4px 9px skyblue, -7px -4px 9px skyblue;
-  }
-
-  /*social starts*/
-
-  #cross {
-    display: none;
-  }
-
-  /*social starts*/
-  header #social {
-    display: block;
-  }
-
-  /*social ends*/
-
-  .collapse-button {
-    display: none;
-  }
-
-  nav.show {
-    display: none;
-  }
-
-  /*   after the  on scroll event   // for the fixed navbar*/
+  /* Grid layout refactored to Tailwind */
 
   .fixed {
     display: block;
@@ -1339,44 +1212,7 @@ footer #social ul a {
   /*        for the fixed navbar*/
 
   /* for the header  ends*/
-  main {
-    grid-column: 3/7;
-    grid-row: 3/6;
-
-    animation: background 6s linear infinite;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .navbar {
-    grid-column: 1/7;
-    grid-row: 2/3;
-  }
-
-  aside {
-    grid-column: 1/3;
-    grid-row: 3/6;
-    position: relative;
-  }
-
-  .hudp {
-    grid-column: 1/7;
-    grid-row: 6/9;
-    position: relative;
-  }
-
-  .paralax {
-    grid-column: 1/7;
-    grid-row: 9/10;
-  }
-
-  footer {
-    grid-column: 1/7;
-    grid-row: 13 / auto;
-    position: relative;
-  }
-
-  /*grid ends*/
+  /* Main Grid items refactored to Tailwind */
 
   /*rules fot the footer*/
 
@@ -1392,11 +1228,11 @@ footer #social ul a {
   }
 
   footer .list li {
-    background: linear-gradient(45deg, transparent 75%, #555);
+    background: linear-gradient(45deg, transparent 75%, var(--border-color));
     transition: all 0.7s linear;
     padding: 5px;
     font-size: 12px;
-    border-top: 3px groove #777;
+    border-top: 3px groove var(--border-color);
     border-bottom: 3px solid transparent;
     border-radius: 30px;
     margin-bottom: 2px;
@@ -1409,7 +1245,59 @@ footer #social ul a {
   /*rules fot the footer  ends*/
 }
 
-/* Page Specific Overrides to Fix Layout Issues */
+/* Force dark footer for both themes */
+footer,
+footer div[class*="bg-"],
+footer div.bg-black {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+footer h3,
+footer h4 {
+  color: var(--primary-color) !important;
+}
+
+footer p,
+footer li,
+footer span,
+footer a {
+  color: #9ca3af !important;
+  /* text-gray-400 */
+}
+
+footer a:hover {
+  color: #67e8f9 !important;
+  /* text-cyan-300 */
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+footer .border-t {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Pulsating Background Animation */
+@keyframes pulse-bg {
+  0% {
+    background-color: var(--bg-dark);
+    box-shadow: 0 0 0 transparent;
+  }
+
+  50% {
+    background-color: var(--card-bg);
+    box-shadow: 0 0 25px var(--glow-color), inset 0 0 10px var(--glow-color);
+  }
+
+  100% {
+    background-color: var(--bg-dark);
+    box-shadow: 0 0 0 transparent;
+  }
+}
+
+.pulsating-bg {
+  animation: pulse-bg 3s infinite ease-in-out;
+}
+
 body.content-page main,
 body.contact-page main,
 body.about-page main,
@@ -1436,3 +1324,28 @@ body.portfolio-page #content {
 
 
 /* first media query ends */
+
+/* Additional Animations and Utilities */
+@keyframes scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 0.8;
+  }
+
+  95% {
+    opacity: 0.8;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}

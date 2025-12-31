@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden w-full">
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class', // Enable class-based dark mode
             theme: {
                 extend: {
                     colors: {
@@ -32,11 +33,19 @@
 
 </head>
 
-<body>
-    <div id="content">
+<body
+    class="overflow-x-hidden w-full transition-colors duration-300 bg-gray-50 dark:bg-[#050A19] text-gray-900 dark:text-gray-100">
+    <div id="content"
+        class="relative min-[576px]:grid min-[576px]:grid-cols-6 min-[576px]:auto-rows-auto min-[576px]:w-full min-[576px]:relative">
+        <!-- Theme Switcher -->
+        <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+            <i class="fa fa-moon-o"></i>
+        </button>
+
         <!-- strat <of></of> header-->
 
-        <header onclick="specles()">
+        <header onclick="specles()"
+            class="bg-gray-100 dark:bg-[rgba(5,10,25,0.95)] p-[30px] min-h-[120px] relative overflow-hidden transition-colors duration-300 flex items-center justify-center min-[576px]:col-span-6 min-[576px]:row-start-1 min-[576px]:row-end-2 box-border group shadow-md dark:shadow-none border-b border-gray-200 dark:border-none">
 
             <ul id="rotateh" class="specles">
                 <li>1</li>
@@ -59,34 +68,42 @@
                 <li>18</li>
             </ul>
             <!-- logo strats -->
-            <h1 class="brand" id="logop">logo</h1>
+            <h1 class="w-[70px] h-[70px] absolute bg-no-repeat bg-center bg-cover indent-[-100000px] top-1/2 -translate-y-1/2 left-5 rounded-full transition-all duration-200 hover:shadow-[2px_2px_10px_2px_skyblue,-2px_-2px_10px_2px_skyblue,inset_-2px_-2px_10px_2px_#00ffff,inset_2px_2px_10px_2px_skyblue] font-display uppercase tracking-[2px]"
+                id="logop">logo</h1>
             <!-- logo ends -->
 
-            <!--    hamburger  starts-->
+            <!--    hamburger  starts---->
 
-            <div class="collapse-button">
-                <a href="#" class="collapse" onclick="add()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
-            </div>
+            <button
+                class="min-[576px]:hidden absolute top-1/2 -translate-y-1/2 right-4 z-[9999] w-12 h-12 flex flex-col items-center justify-center gap-1.5 bg-cyan-500/20 border-2 border-cyan-400 rounded-lg hover:bg-cyan-500/40 hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,191,255,0.4)] hover:shadow-[0_0_25px_rgba(0,191,255,0.7)]"
+                id="hamburger-btn">
+                <span
+                    class="block w-7 h-0.5 bg-cyan-400 rounded-sm shadow-[0_0_10px_#00BFFF] transition-all duration-300"></span>
+                <span
+                    class="block w-7 h-0.5 bg-cyan-400 rounded-sm shadow-[0_0_10px_#00BFFF] transition-all duration-300"></span>
+                <span
+                    class="block w-7 h-0.5 bg-cyan-400 rounded-sm shadow-[0_0_10px_#00BFFF] transition-all duration-300"></span>
+            </button>
 
             <!--  hamburger       ends     -->
-            <div id="social">
-                <ul>
+            <div id="social"
+                class="hidden min-[576px]:block absolute top-[15%] -left-[15px] w-[10px] h-[30px] z-[-1] before:content-[''] before:w-[10px] before:h-[30px] before:bg-gradient-to-b before:from-transparent before:to-skyblue before:absolute before:z-[-1] before:shadow-[2px_2px_5px_1px_skyblue,-2px_-2px_5px_1px_skyblue] hover:right-[-12px] transition-all duration-300">
+                <ul class="flex justify-end p-5 skew-x-[20deg] gap-4">
                     <li onmouseover="pro()">
-                        <a href="#">
+                        <a href="#"
+                            class="text-skyblue p-2.5 border-2 border-groove border-skyblue rounded-[20%] hover:scale-110 hover:shadow-[0_0_10px_skyblue] transition-transform">
                             <i class="fa fa-facebook-square" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li onmouseover="pro()">
-                        <a href="#">
+                        <a href="#"
+                            class="text-skyblue p-2.5 border-2 border-groove border-skyblue rounded-[20%] hover:scale-110 hover:shadow-[0_0_10px_skyblue] transition-transform">
                             <i class="fa fa-twitter" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li onmouseover="pro()">
-                        <a href="#">
+                        <a href="#"
+                            class="text-[var(--primary-color)] p-2.5 border-2 border-groove border-[var(--primary-color)] rounded-[20%] hover:scale-110 hover:shadow-[0_0_10px_var(--primary-color)] transition-transform">
                             <i class="fa fa-youtube" aria-hidden="true"></i>
                         </a>
                     </li>
@@ -98,14 +115,25 @@
         <!--        end of header-->
 
         <!--starting of navbar-->
-        <div class="navbar" id="navigation">
-            <nav id="nav">
-                <ul>
-                    <li onmouseover="pro()"><a id="firsta" href="index.html">Home</a></li>
-                    <li onmouseover="pro()"><a href="about.html">About</a></li>
-                    <li onmouseover="pro()"><a href="portfolio.html">Portfolio</a></li>
-                    <li onmouseover="pro()"><a href="skills.html">Skills</a></li>
-                    <li onmouseover="pro()"><a id="lasta" href="contact.html">Contact</a></li>
+        <div class="navbar min-[576px]:col-span-6 min-[576px]:row-start-2 min-[576px]:row-end-3 bg-blue-50/50 dark:bg-[rgba(5,10,25,0.8)] shadow-[var(--nav-inner-glow),0px_2px_12px_1px_black]"
+            id="navigation">
+            <nav id="nav" class="min-[576px]:block">
+                <ul class="flex flex-wrap justify-center">
+                    <li onmouseover="pro()"><a id="firsta" href="index.html"
+                            class="block p-2.5 text-center flex items-center justify-center min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-blue-400 dark:border-cyan-400 transition-all duration-300 font-bold bg-blue-100 dark:bg-transparent text-blue-700 dark:text-cyan-400 dark:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] shadow-inner dark:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Home</a>
+                    </li>
+                    <li onmouseover="pro()"><a href="about.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">About</a>
+                    </li>
+                    <li onmouseover="pro()"><a href="portfolio.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Portfolio</a>
+                    </li>
+                    <li onmouseover="pro()"><a href="skills.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Skills</a>
+                    </li>
+                    <li onmouseover="pro()"><a id="lasta" href="contact.html"
+                            class="block p-2.5 text-center flex items-center justify-center text-gray-800 dark:text-gray-100 min-w-[100px] border-l-[var(--nav-border-width)] border-r-[var(--nav-border-width)] border-groove border-gray-300 dark:border-cyan-400 transition-all duration-300 shadow-md dark:shadow-[var(--nav-shadow)] bg-blue-50 dark:bg-transparent hover:bg-blue-100 dark:hover:bg-transparent hover:text-blue-600 dark:hover:text-shadow-[1px_1px_2px_var(--primary-color),-1px_-1px_2px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[inset_1px_1px_10px_2px_var(--primary-color)]">Contact</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -113,38 +141,57 @@
         <!--        end of navbar       -->
 
         <!--       start of main-->
-        <main>
-            <div id="rotatep" onclick="rotate()">
-                <div class="rotch one">
-                    <h1>photo retoucher</h1>
-                    <div class="underline"></div>
+        <!--       start of main-->
+        <main
+            class="min-[576px]:col-start-3 min-[576px]:col-end-7 min-[576px]:row-start-3 min-[576px]:row-end-6 overflow-hidden relative animate-[background_6s_linear_infinite]">
+            <div id="rotatep" onclick="rotate()" class="rotate relative w-full h-full">
+                <div
+                    class="rotch absolute w-full h-full left-0 border-2 border-gray-300 dark:border-cyan-400 shadow-xl dark:shadow-[inset_2px_2px_5px_1px_#00ffff,inset_-2px_-2px_5px_1px_#00ffff] bg-white dark:bg-[linear-gradient(45deg,transparent,rgba(255,255,255,0.1))] origin-[0%_50%] overflow-hidden pt-[100px] group">
+                    <h1 class="text-3xl text-blue-600 dark:text-cyan-400 font-display uppercase ml-10">photo retoucher
+                    </h1>
+                    <div
+                        class="underline origin-[0%_0%] absolute left-full h-[10px] w-4/5 bg-aqua group-hover:animate-[flick_0.1s_ease-in_forwards]">
+                    </div>
                 </div>
-                <div class="rotch two">
-                    <h1>web designer</h1>
-                    <div class="underline"></div>
+                <div
+                    class="rotch two absolute w-full h-full left-0 border-2 border-gray-300 dark:border-cyan-400 shadow-xl dark:shadow-[inset_2px_2px_5px_1px_#00ffff,inset_-2px_-2px_5px_1px_#00ffff] bg-white dark:bg-[linear-gradient(45deg,transparent,rgba(255,255,255,0.1))] origin-[0%_50%] overflow-hidden pt-[100px] [transform:rotate3d(0,1,0,90deg)] group">
+                    <h1 class="text-3xl text-blue-600 dark:text-cyan-400 font-display uppercase ml-10">web designer</h1>
+                    <div
+                        class="underline origin-[0%_0%] absolute left-full h-[10px] w-4/5 bg-aqua group-hover:animate-[flick_0.1s_ease-in_forwards]">
+                    </div>
                 </div>
-                <div class="rotch three">
-                    <h1>illustrator</h1>
-                    <div class="underline"></div>
+                <div
+                    class="rotch three absolute w-full h-full left-0 border-2 border-gray-300 dark:border-cyan-400 shadow-xl dark:shadow-[inset_2px_2px_5px_1px_#00ffff,inset_-2px_-2px_5px_1px_#00ffff] bg-white dark:bg-[linear-gradient(45deg,transparent,rgba(255,255,255,0.1))] origin-[0%_50%] overflow-hidden pt-[100px] [transform:rotate3d(0,1,0,180deg)] group">
+                    <h1 class="text-3xl text-blue-600 dark:text-cyan-400 font-display uppercase ml-10">illustrator</h1>
+                    <div
+                        class="underline origin-[0%_0%] absolute left-full h-[10px] w-4/5 bg-aqua group-hover:animate-[flick_0.1s_ease-in_forwards]">
+                    </div>
                 </div>
-                <div class="rotch four">
-                    <h1>infatuated with 3d graphics</h1>
-                    <div class="underline"></div>
+                <div
+                    class="rotch four absolute w-full h-full left-0 border-2 border-gray-300 dark:border-cyan-400 shadow-xl dark:shadow-[inset_2px_2px_5px_1px_#00ffff,inset_-2px_-2px_5px_1px_#00ffff] bg-white dark:bg-[linear-gradient(45deg,transparent,rgba(255,255,255,0.1))] origin-[0%_50%] overflow-hidden pt-[100px] [transform:rotate3d(0,1,0,270deg)] group">
+                    <h1 class="text-3xl text-blue-600 dark:text-cyan-400 font-display uppercase ml-10">infatuated with
+                        3d
+                        graphics</h1>
+                    <div
+                        class="underline origin-[0%_0%] absolute left-full h-[10px] w-4/5 bg-aqua group-hover:animate-[flick_0.1s_ease-in_forwards]">
+                    </div>
                 </div>
             </div>
         </main>
         <!--        end of main-->
 
         <!--       aside tag sarts-->
-        <aside id="as">
-            <div class="asidewpr flex flex-col justify-center items-center h-full text-center">
-                <img src="images/logo.png" alt="" class="mx-auto">
+        <aside id="as"
+            class="min-[576px]:col-start-1 min-[576px]:col-end-3 min-[576px]:row-start-3 min-[576px]:row-end-6 relative py-[15px] overflow-hidden text-[var(--primary-color)] [transform-style:preserve-3d] [perspective:300px] shadow-[inset_2px_2px_5px_1px_var(--primary-color),inset_-2px_-2px_5px_1px_var(--primary-color)] bg-[var(--card-bg)] group">
+            <div
+                class="asidewpr flex flex-col justify-center items-center h-full text-center p-[10px] [perspective:30000px] relative mx-auto w-[70%] shadow-[inset_0px_1px_20px_2px_var(--primary-color),1px_1px_20px_5px_var(--primary-color)] overflow-hidden origin-[50%_0%] [transform:rotate3d(1,0,0,-30deg)] group-hover:animate-[dangle_1s_linear_infinite]">
+                <img src="images/logo.png" alt="" class="mx-auto w-24 h-24 object-contain">
                 <br>
                 <br>
-                <h1>Prosenjit Sapui</h1>
+                <h1 class="text-xl font-display text-[var(--text-main)]">Prosenjit Sapui</h1>
                 <br>
                 <br>
-                <p>Just loves UI design and 3d graphics </p>
+                <p class="text-[var(--text-muted)]">Just loves UI design and 3d graphics </p>
             </div>
         </aside>
 
@@ -157,7 +204,8 @@
 
 
         <!--the section div strats-->
-        <div class="hudp">
+        <!--the section div strats-->
+        <div class="hudp min-[576px]:col-span-6 min-[576px]:row-start-6 min-[576px]:row-end-9 relative block">
             <div class="hud" id="hudd">
                 <div class="hudch"></div>
                 <div class="hudch"></div>
@@ -185,17 +233,22 @@
         <!--        the section div ends-->
 
         <!-- slier starts -->
-        <div class="paralax">
-            <div id="para"></div>
-            <div class="p layer2">
+        <div
+            class="paralax min-[576px]:col-span-6 min-[576px]:row-start-9 min-[576px]:row-end-10 relative block w-full h-[270px] p-[10px] overflow-hidden">
+            <div id="para"
+                class="absolute top-0 left-0 w-full h-[270%] bg-[url('../images/cor.jpg')] bg-no-repeat bg-center bg-cover">
+            </div>
+            <div
+                class="p layer2 absolute p-[50px] h-[250px] border border-[var(--border-color)] text-[var(--primary-color)] left-[-30px] bg-[var(--glass-bg)] -skew-x-[10deg] w-[60%]">
                 <div class="cwrapper">
-                    <h2>about me</h2>
+                    <h2 class="text-2xl font-display uppercase mb-2">about me</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
             </div>
-            <div class="p layer3">
+            <div
+                class="p layer3 absolute p-[50px] h-[250px] border border-[var(--border-color)] text-[var(--primary-color)] right-[-30px] bg-[var(--glass-bg)] -skew-x-[10deg] w-[50%]">
                 <div class="cwrapper">
-                    <h2>about me</h2>
+                    <h2 class="text-2xl font-display uppercase mb-2">about me</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
             </div>
@@ -207,7 +260,7 @@
         <!-- FOOTER -->
         <!-- PREMIUM FOOTER -->
         <footer
-            class="bg-gradient-to-t from-black to-[#050505] border-t border-cyan-400/10 pt-16 mt-12 font-sans relative">
+            class="min-[576px]:col-span-6 min-[576px]:row-start-[10] bg-black border-t border-cyan-400/10 pt-16 mt-12 font-sans relative z-10">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-8 pb-10">
                 <!-- Brand Col -->
                 <div class="footer-col">
