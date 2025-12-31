@@ -140,20 +140,20 @@
         </header>
 
         <!-- Navbar -->
-        <div class="navbar w-full sticky top-0 z-50">
+        <!--starting of navbar-->
+        <div class="navbar" id="navigation">
             <nav id="nav">
                 <ul>
                     <li onmouseover="pro()"><a id="firsta" href="index.html">Home</a></li>
                     <li onmouseover="pro()"><a href="about.html">About</a></li>
                     <li onmouseover="pro()"><a href="portfolio.html">Portfolio</a></li>
-                    <li onmouseover="pro()"><a href="contact.html">Contact</a></li>
-                    <li id="sub" onmouseover="pro()">
-                        <a href="skills.html"
-                            style="color: var(--primary-color); text-shadow: 0 0 5px var(--primary-color);">Skills</a>
-                    </li>
+                    <li onmouseover="pro()"><a href="skills.html">Skills</a></li>
+                    <li onmouseover="pro()"><a id="lasta" href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
+
+        <!--        end of navbar       -->
 
         <!-- Main Content -->
         <main class="flex-grow container mx-auto px-4 py-12 relative z-10">
@@ -309,8 +309,7 @@
         </main>
 
         <!-- PREMIUM FOOTER -->
-        <footer
-            class="bg-gradient-to-t from-black to-[#050505] border-t border-cyan-400/10 pt-16 mt-12 font-sans relative">
+        <footer class="bg-navy border-t border-cyan-400/10 pt-16 mt-12 font-sans relative">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-8 pb-10">
                 <!-- Brand Col -->
                 <div class="footer-col">
@@ -371,7 +370,8 @@
 
             <div class="bg-black py-5 text-center border-t border-white/5">
                 <p class="text-gray-500 text-sm m-0">&copy; 2025 Prosenjit Sapui. All Rights Reserved. Designed with
-                    <span class="text-secondary">&#10084;</span> and Code.</p>
+                    <span class="text-secondary">&#10084;</span> and Code.
+                </p>
             </div>
         </footer>
 
