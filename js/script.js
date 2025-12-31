@@ -63,11 +63,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function initTheme() {
 	const savedTheme = localStorage.getItem('theme') || 'light';
 
-	// Apply Tailwind dark mode class
+	// Apply Tailwind dark mode class and data-attribute
 	if (savedTheme === 'dark') {
 		document.documentElement.classList.add('dark');
+		document.documentElement.setAttribute('data-theme', 'dark');
 	} else {
 		document.documentElement.classList.remove('dark');
+		document.documentElement.setAttribute('data-theme', 'light');
 	}
 	updateThemeIcon(savedTheme);
 }
@@ -80,11 +82,13 @@ function toggleTheme() {
 	// Save preference
 	localStorage.setItem('theme', newTheme);
 
-	// Toggle Tailwind class
+	// Toggle Tailwind class and data-attribute
 	if (newTheme === 'dark') {
 		document.documentElement.classList.add('dark');
+		document.documentElement.setAttribute('data-theme', 'dark');
 	} else {
 		document.documentElement.classList.remove('dark');
+		document.documentElement.setAttribute('data-theme', 'light');
 	}
 
 	updateThemeIcon(newTheme);
