@@ -682,13 +682,7 @@ textarea.form-control {
 
 /* --- SHARED FOOTER --- */
 /* Ensure standard styling for footer across all pages that use these classes */
-.footer-col h3 {
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-  position: relative;
-  display: inline-block;
-}
+
 
 .footer-col h3::after {
   content: '';
@@ -1238,39 +1232,24 @@ aside:hover .asidewpr {
     margin-bottom: 2px;
   }
 
-  footer #social {
-    display: none;
-  }
 
   /*rules fot the footer  ends*/
 }
 
 /* Force dark footer for both themes */
-footer,
-footer div[class*="bg-"],
-footer div.bg-black {
-  background-color: #000000 !important;
-  background-image: none !important;
-}
 
-footer h3,
+
+/* footer h3,
 footer h4 {
   color: var(--primary-color) !important;
-}
+} */
 
 footer p,
 footer li,
 footer span,
-footer a {
-  color: #9ca3af !important;
-  /* text-gray-400 */
-}
 
-footer a:hover {
-  color: #67e8f9 !important;
-  /* text-cyan-300 */
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-}
+
+
 
 footer .border-t {
   border-color: rgba(255, 255, 255, 0.1) !important;
@@ -1312,40 +1291,4 @@ body.portfolio-page main {
   transform-style: flat !important;
   background: transparent !important;
   animation: none !important;
-}
-
-body.content-page #content,
-body.contact-page #content,
-body.about-page #content,
-body.portfolio-page #content {
-  display: block !important;
-  grid-template-columns: none !important;
-}
-
-
-/* first media query ends */
-
-/* Additional Animations and Utilities */
-@keyframes scan {
-  0% {
-    top: 0%;
-    opacity: 0;
-  }
-
-  5% {
-    opacity: 0.8;
-  }
-
-  95% {
-    opacity: 0.8;
-  }
-
-  100% {
-    top: 100%;
-    opacity: 0;
-  }
-}
-
-.perspective-1000 {
-  perspective: 1000px;
 }
